@@ -1,0 +1,43 @@
+.ClassListingContainer {
+  border: 1px black solid;
+  height: 85%;
+  width: 70%;
+  top: 10%;
+  left: 15%;
+  text-align: center;
+  position: absolute;
+  display: flex;
+}
+
+.ClassContainerHeader{
+  position: relative;
+  width: 100%;
+  height: 10%;
+}
+
+.CardContainer{
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  margin-top: 10%;
+  white-space: normal;
+  overflow:overlay
+}
+
+
+.ClassCard{
+  display: inline-block;
+  border: 1px black solid;
+  height: 25%;
+  width: 25%;
+  margin: 2%;
+  text-align: center;
+}
+
+.CardInfo{
+  border: 1px black solid;
+  display: inline-block;
+  width: 80%;
+  font-size: .8em;
+
+}

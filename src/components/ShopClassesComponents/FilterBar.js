@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
-import './ShopClasses.css'
+import './FilterBar.css'
 
-export default class ShopClasses extends Component {
+export default class FilterBar extends Component {
   render(){
     return (
-      <div className="ShopContainer">
-        <div className="ShopContainerHeader"> <h1> ShopContainer </h1> </div>
         <div className="FilterBar">
           <div className="LocationPreferenceDiv">
 
@@ -138,7 +136,6 @@ export default class ShopClasses extends Component {
 
           </div>
         </div>
-      </div>
     )
   }
 }

@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react';
 import './App.css';
 import SignUp from './components/SignUp'
 import Login from './components/Login'
-import ShopClasses from './components/ShopClasses'
+import ShopClasses from './components/ShopClassesComponents/ShopClasses'
 import Home from './components/Home'
 
 class App extends Component {
