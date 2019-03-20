@@ -1,0 +1,64 @@
+.ShopContainer {
+  text-align: center;
+}
+.ShopContainerHeader {
+  display: inline-block;
+}
+
+.FilterBar{
+  position: absolute;
+  border: 1px black solid;
+  height: 80%;
+  width: 12vw;
+  text-align: left;
+  overflow:overlay
+}
+
+.LocationPreferenceDiv{
+  border: 1px pink solid;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  margin: 1vh;
+  white-space: normal;
+  display: flex;
+}
+.PricePreferenceDiv{
+  border: 1px pink solid;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  margin: 1vh;
+  white-space: normal;
+  display: flex;
+  overflow:overlay
+
+}
+.TypePreferenceDiv{
+  border: 1px pink solid;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  margin: 1vh;
+  white-space: normal;
+  display: flex;
+  overflow:overlay
+}
+
+.locationListing{
+  float: left;
+  position: relative;
+  flex-direction: column;
+  width: 95%
+}
+
+.priceListing{
+  float: left;
+  position: relative;
+  flex-direction: column;
+  width: 95%
+}
+
+.typeListing{
+  float: left;
+  position: relative;
+  flex-direction: column;
+  width: 95%
+}
