@@ -7,19 +7,31 @@
   text-align: center;
   position: absolute;
   display: flex;
+  white-space: normal;
+  overflow:overlay;
+  justify-content: center;
 }
 
 .ClassContainerHeader{
   position: relative;
   width: 100%;
-  height: 10%;
+  height: 5%;
+}
+
+.ClassSearchBar {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  margin-top: 4%;
+  width: 30%;
 }
 
 .CardContainer{
   position: absolute;
   width: 100%;
   height: 90%;
-  margin-top: 10%;
+  margin-top: 7%;
   white-space: normal;
   overflow:overlay
 }

@@ -42,6 +42,23 @@
   overflow:overlay
 }
 
+.GymPreferenceDiv {
+  border: 1px pink solid;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  margin: 1vh;
+  white-space: normal;
+  display: flex;
+  overflow:overlay
+}
+
+.gymListing{
+  float: left;
+  position: relative;
+  flex-direction: column;
+  width: 95%
+}
+
 .locationListing{
   float: left;
   position: relative;

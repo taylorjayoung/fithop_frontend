@@ -6,6 +6,7 @@ export default class ClassContainer extends Component {
     return (
       <div className="ClassListingContainer">
         <h2 className="ClassContainerHeader"> Class container </h2>
+        <input className="ClassSearchBar" type="search" placeholder="Search by Gym or Class"/>
         <div className="CardContainer">
           <div className="ClassCard">Card1
             <div className="CardInfo">

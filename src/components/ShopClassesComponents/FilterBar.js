@@ -101,6 +101,45 @@ export default class FilterBar extends Component {
             </form>
 
           </div>
+
+          <div className="GymPreferenceDiv">
+            <form>
+              <p>Gym</p>
+              <label className="gymListing">
+                Barry's Bootcamp
+                <input type="checkbox" value="Barry's Bootcamp" />
+              </label>
+
+              <label className="gymListing">
+                NYSC
+                <input type="checkbox" value="NYSC" />
+              </label>
+
+              <label className="gymListing">
+                Soul Cycle
+                <input type="checkbox" value="Soul Cycle" />
+              </label>
+
+              <label className="gymListing">
+                FlyWheel
+                <input type="checkbox" value="FlyWheel" />
+              </label>
+
+              <label className="gymListing">
+                Fhitting Room
+                <input type="checkbox" value="Fhitting Room" />
+              </label>
+
+              <label className="gymListing">
+                KickAxe
+                <input type="checkbox" value="KickAxe" />
+              </label>
+
+            </form>
+
+          </div>
+
+
           <div className="TypePreferenceDiv">
 
             <form>
