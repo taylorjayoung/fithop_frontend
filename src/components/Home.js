@@ -4,7 +4,7 @@ export default class Home extends Component {
   render(){
     return (
       <div id="app_container">
-        <div className="btn app_login_btn" onClick={this.handleClickLogin}>Login</div>
+        <div className="btn app_login_btn" onClick={this.props.handleClickLogin}>Login</div>
         <div id="app_header_container">
           <span id="app_header_main">Welcome To</span>
           <span id="app_header_sub">

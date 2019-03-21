@@ -53,3 +53,22 @@
   font-size: .8em;
 
 }
+
+.ViewControlTab {
+  position: absolute;
+  right: 0;
+  display: flex;
+  padding: 1%;
+}
+.ListView {
+  margin: 1%;
+  padding: 3%;
+  border: 1px black solid;
+  background-color: grey;
+  font-weight: bold;
+}
+.MapView {
+  margin: 1%;
+  padding: 3%;
+  border: 1px black solid;
+}

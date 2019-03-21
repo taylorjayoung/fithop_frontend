@@ -17,11 +17,11 @@ class App extends Component {
 
 
   handleClickLogin = () => {
-    this.setState({ showLogin : true })
+    this.setState({ showLogin : true, home: false})
   }
 
   handleClickSignUp = () => {
-    this.setState({ showSignUp : true })
+    this.setState({ showSignUp : true, home:false})
   }
 
   handleClickExplore = () => {
@@ -32,7 +32,8 @@ class App extends Component {
   }
 
   handleClickFalse = () => {
-    this.setState({ showLogin : false, showSignUp : false })
+    debugger
+    this.setState({ showLogin : false, showSignUp : false, home: false })
   }
 
   handleClickHome = () => {
@@ -58,7 +59,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <div id="app">
-          {this.state.home ? <Home handleClickExplore={this.handleClickExplore} handleClickSignUp={this.handleClickSignUp} /> : null }
+          {this.state.home ? <Home handleClickLogin={this.handleClickLogin} handleClickExplore={this.handleClickExplore} handleClickSignUp={this.handleClickSignUp} /> : null }
           {this.state.showLogin || this.state.showSignUp ? <div id="login_background"></div> : null }
           {this.state.showLogin ? <Login handleClickFalse={this.handleClickFalse} setUser={this.setUser}/> : null }
           {this.state.showSignUp ? <SignUp handleClickFalse={this.handleClickFalse} setUser={this.setUser}/> : null }

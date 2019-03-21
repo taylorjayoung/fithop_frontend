@@ -12,8 +12,7 @@ class SignUp extends Component {
 
   handleSubmitSignUp = (event) => {
     event.preventDefault()
-    fetch('https://study-js-backened.herokuapp.com/SignUp', {
-    // fetch('http://localhost:3000/SignUp', {
+    fetch('http://localhost:3000/users', {
       method: 'POST',
       headers: {
         'Accept' : 'application/json',
@@ -21,8 +20,6 @@ class SignUp extends Component {
       },
       body: JSON.stringify({
         user: {
-          name: this.state.name,
-          email: this.state.email,
           username: this.state.username,
           password: this.state.password
         }

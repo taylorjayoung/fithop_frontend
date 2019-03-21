@@ -5,6 +5,10 @@ export default class ClassContainer extends Component {
   render(){
     return (
       <div className="ClassListingContainer">
+        <div className="ViewControlTab">
+          <div className="ListView">List</div>
+          <div className="MapView">Map</div>
+        </div>
         <h2 className="ClassContainerHeader"> Class container </h2>
         <input className="ClassSearchBar" type="search" placeholder="Search by Gym or Class"/>
         <div className="CardContainer">
