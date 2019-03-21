@@ -7,8 +7,9 @@
 
 .FilterBar{
   position: absolute;
+  margin-top: 3%;
   border: 1px black solid;
-  height: 80%;
+  height: 85%;
   width: 12vw;
   text-align: left;
   overflow:overlay

@@ -1,7 +1,7 @@
 .ClassListingContainer {
   border: 1px black solid;
   height: 85%;
-  width: 70%;
+  width: 80%;
   top: 10%;
   left: 15%;
   text-align: center;
@@ -29,6 +29,7 @@
 
 .CardContainer{
   position: absolute;
+  float: left;
   width: 100%;
   height: 90%;
   margin-top: 7%;
@@ -36,6 +37,37 @@
   overflow:overlay
 }
 
+.SkinnyCardContainer{
+  position: absolute;
+  width: 40%;
+  height: 90%;
+  margin-top: 7%;
+  white-space: normal;
+  overflow:overlay;
+  left: 0;
+}
+
+
+.SkinnyCard{
+  display: inline-block;
+  border: 1px black solid;
+  height: 25%;
+  width: 70%;
+  margin: 2%;
+  float: left;
+  text-align: center;
+}
+
+.SkinnyCardInfo{
+  display: inline-block;
+  border: 1px black solid;
+  height: 75%;
+  margin: 2%;
+  float: left;
+  text-align: center;
+  white-space: normal;
+  overflow:overlay;
+}
 
 .ClassCard{
   display: inline-block;
@@ -66,9 +98,19 @@
   border: 1px black solid;
   background-color: grey;
   font-weight: bold;
+  z-index: 100;
 }
 .MapView {
   margin: 1%;
   padding: 3%;
   border: 1px black solid;
+  z-index: 100;
+}
+
+.mapDiv {
+  background-color: pink;
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100%;
 }
