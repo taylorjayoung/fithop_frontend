@@ -32,8 +32,7 @@ class App extends Component {
   }
 
   handleClickFalse = () => {
-    debugger
-    this.setState({ showLogin : false, showSignUp : false, home: false })
+    this.setState({ showLogin : false, showSignUp : false, home: true })
   }
 
   handleClickHome = () => {

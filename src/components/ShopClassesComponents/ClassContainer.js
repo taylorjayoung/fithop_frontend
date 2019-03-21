@@ -1,34 +1,60 @@
 import React, {Component} from 'react'
 import MapContainer from '../MapContainer'
+import GoogleApiWrapper from '../MapContainer'
 import './ClassContainer.css'
 import Geocode from "react-geocode";
-
+import listCards from "./listCards"
 export default class ClassContainer extends Component {
   constructor(props){
     super(props)
+    this.translateAddressToCoordinates = this.translateAddressToCoordinates.bind(this)
     console.log("bound")
   }
+
   async componentDidMount(){
     Geocode.setApiKey("AIzaSyDMIBD2wef6TI6cS-AkncJd7FmaSnWfoyM");
-    let address
-
-    if(!this.state.currentClass){
-       address = "New York City"
+    let currentAddress
+    if(this.state.currentClass){
+      currentAddress = this.state.currentClass.address
     } else {
-       address = this.state.currentClass.address
+       currentAddress = "New York City"
+
     }
     this.setState({
-      address: await this.translateAddressToCoordinates(address).then(function (response) {
+      address: await this.translateAddressToCoordinates(currentAddress).then(function (response) {
            return response
          })
-    }, () => console.log(this.state))
+    })
 }
 
   state = ({
-    view: "List",
-    classes: null,
-    currentClass: null,
-    address: null
+    classes:
+    [
+      {
+        name: "Pilates",
+        id: 1,
+        prie: 50,
+        address: "1216 2nd Ave, New York, NY 10065",
+        time: "2:00"
+      },
+      {
+        name: "Cycling",
+        id: 2,
+        price: 20,
+        address: "107 E 27th St, New York, NY 10016",
+        time: "4:00"
+      },
+      {
+        name: "Cycling",
+        id: 3,
+        price: 20,
+        address: "135 W 20th St, New York, NY 10011",
+        time: "4:00"
+      }
+    ],
+      view: "List",
+      currentClass: "",
+      address: null
   })
 
   viewHandler = (event) => {
@@ -38,7 +64,7 @@ export default class ClassContainer extends Component {
       }
       this.setState({
         view: "List"
-      }, () => console.log(this.state))
+      })
     }
 
     else if(event.target.innerText === "Map"){
@@ -47,113 +73,32 @@ export default class ClassContainer extends Component {
       }
       this.setState({
         view: "Map"
-      }, () => console.log(this.state))
+      })
     }
 
   }
 
-  listCards = () => {
-    return (
-      <>
-        <div className={this.state.view === "List" ? "ClassCard" : "SkinnyCard"}>Card1
-          <div className={this.state.view === "List" ? "CardInfo" : "SkinnyCardInfo"}>
-            Class Name: Name,
-            Class Price: Price,
-            Class Location: Location,
-            Class Time: Time
-          </div>
-        </div>
-        <div className={this.state.view === "List" ? "ClassCard" : "SkinnyCard"}>Card2
-          <div className={this.state.view === "List" ? "CardInfo" : "SkinnyCardInfo"}>
-            Class Name: Name,
-            Class Price: Price,
-            Class Location: Location,
-            Class Time: Time
-          </div>
-        </div>
-        <div className={this.state.view === "List" ? "ClassCard" : "SkinnyCard"}>Card3
-          <div className={this.state.view === "List" ? "CardInfo" : "SkinnyCardInfo"}>
-            Class Name: Name,
-            Class Price: Price,
-            Class Location: Location,
-            Class Time: Time
-          </div>
-        </div>
-        <div className={this.state.view === "List" ? "ClassCard" : "SkinnyCard"}>Card4
-          <div className={this.state.view === "List" ? "CardInfo" : "SkinnyCardInfo"}>
-            Class Name: Name,
-            Class Price: Price,
-            Class Location: Location,
-            Class Time: Time
-          </div>
-        </div>
-        <div className={this.state.view === "List" ? "ClassCard" : "SkinnyCard"}>Card5
-          <div className={this.state.view === "List" ? "CardInfo" : "SkinnyCardInfo"}>
-            Class Name: Name,
-            Class Price: Price,
-            Class Location: Location,
-            Class Time: Time
-          </div>
-        </div>
-        <div className={this.state.view === "List" ? "ClassCard" : "SkinnyCard"}>Card6
-          <div className={this.state.view === "List" ? "CardInfo" : "SkinnyCardInfo"}>
-            Class Name: Name,
-            Class Price: Price,
-            Class Location: Location,
-            Class Time: Time
-          </div>
-        </div>
-        <div className={this.state.view === "List" ? "ClassCard" : "SkinnyCard"}>Card7
-          <div className={this.state.view === "List" ? "CardInfo" : "SkinnyCardInfo"}>
-            Class Name: Name,
-            Class Price: Price,
-            Class Location: Location,
-            Class Time: Time
-          </div>
-        </div>
-        <div className={this.state.view === "List" ? "ClassCard" : "SkinnyCard"}>Card8
-          <div className={this.state.view === "List" ? "CardInfo" : "SkinnyCardInfo"}>
-            Class Name: Name,
-            Class Price: Price,
-            Class Location: Location,
-            Class Time: Time
-          </div>
-        </div>
-        <div className={this.state.view === "List" ? "ClassCard" : "SkinnyCard"}>Card9
-          <div className={this.state.view === "List" ? "CardInfo" : "SkinnyCardInfo"}>
-            Class Name: Name,
-            Class Price: Price,
-            Class Location: Location,
-            Class Time: Time
-          </div>
-        </div>
-        <div className={this.state.view === "List" ? "ClassCard" : "SkinnyCard"}>Card10
-          <div className={this.state.view === "List" ? "CardInfo" : "SkinnyCardInfo"}>
-            Class Name: Name,
-            Class Price: Price,
-            Class Location: Location,
-            Class Time: Time
-          </div>
-        </div>
-        <div className={this.state.view === "List" ? "ClassCard" : "SkinnyCard"}>Card11
-          <div className={this.state.view === "List" ? "CardInfo" : "SkinnyCardInfo"}>
-            Class Name: Name,
-            Class Price: Price,
-            Class Location: Location,
-            Class Time: Time
-          </div>
-        </div>
-        <div className={this.state.view === "List" ? "ClassCard" : "SkinnyCard"}>Card12
-          <div className={this.state.view === "List" ? "CardInfo" : "SkinnyCardInfo"}>
-            Class Name: Name,
-            Class Price: Price,
-            Class Location: Location,
-            Class Time: Time
-          </div>
-        </div>
-      < />
-    )
-  }
+
+setCurrentClass = async (event) => {
+//this async function takes the click event from an individual class card
+// it matches the id of the card with a class in the state classes array
+
+  const selectedClass = this.state.classes.filter(c => {
+    return c.id === parseInt(event.target.id)
+  })
+
+  //then it calls an async function to convert the address of the class
+  //into a coordinate pair for the google maps api
+  const address = await this.translateAddressToCoordinates(selectedClass[0].address).then(function (response) {
+       return response
+     })
+
+//finally it sets the state
+  this.setState({
+    currentClass: selectedClass[0],
+    address: address
+  }, () => console.log('class container state change'))
+}
 
 
  async translateAddressToCoordinates(address){
@@ -167,7 +112,7 @@ export default class ClassContainer extends Component {
 renderMap(){
   return (
     <div className="mapDiv">
-      <MapContainer data={this.state.address}/>
+      <MapContainer address={this.state.address}/>
     </div>
   )
 }
@@ -175,7 +120,6 @@ renderMap(){
   render(){
     return (
       <div className="ClassListingContainer">
-
         <div className="ViewControlTab">
           <div className="ListView" onClick={(event)=> this.viewHandler(event)} >List</div>
           <div className="MapView"  onClick={(event)=> this.viewHandler(event)}>Map</div>
@@ -185,9 +129,11 @@ renderMap(){
         <input className="ClassSearchBar" type="search" placeholder="Search by Gym or Class"/>
 
         <div className={this.state.view === "List" ? "CardContainer" : "SkinnyCardContainer"}>
-          {this.listCards()}
+          {listCards(this.state.view, this.setCurrentClass)}
         </div>
-          {this.state.view === "Map" ? this.renderMap() : null}
+        <div id="mapDiv">{this.state.view === "Map" ? this.renderMap() : null}
+        </div>
+        <div>{this.state.currentClass.name ?  this.state.currentClass.name  :"New"}</div>
 
       </div>
 
