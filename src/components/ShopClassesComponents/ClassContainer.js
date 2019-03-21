@@ -13,48 +13,41 @@ export default class ClassContainer extends Component {
 
   async componentDidMount(){
     Geocode.setApiKey("AIzaSyDMIBD2wef6TI6cS-AkncJd7FmaSnWfoyM");
+    this.getClasses()
+  }
+
+  getClasses = () => {
+    fetch("http://localhost:3000/fitness_classes")
+    .then(res => res.json())
+    .then( jsonData => {
+      this.setState({
+        classes: jsonData
+      }, () => console.log(this.state.classes))
+    })
+    .catch(e => console.log(e))
+  }
+
+  setCurrentAddress = async () => {
     let currentAddress
+
     if(this.state.currentClass){
       currentAddress = this.state.currentClass.address
     } else {
        currentAddress = "New York City"
-
     }
+
     this.setState({
       address: await this.translateAddressToCoordinates(currentAddress).then(function (response) {
            return response
          })
     })
-}
+  }
 
   state = ({
-    classes:
-    [
-      {
-        name: "Pilates",
-        id: 1,
-        prie: 50,
-        address: "1216 2nd Ave, New York, NY 10065",
-        time: "2:00"
-      },
-      {
-        name: "Cycling",
-        id: 2,
-        price: 20,
-        address: "107 E 27th St, New York, NY 10016",
-        time: "4:00"
-      },
-      {
-        name: "Cycling",
-        id: 3,
-        price: 20,
-        address: "135 W 20th St, New York, NY 10011",
-        time: "4:00"
-      }
-    ],
-      view: "List",
-      currentClass: "",
-      address: null
+    classes: null,
+    view: "List",
+    currentClass: "",
+    address: null
   })
 
   viewHandler = (event) => {
@@ -83,19 +76,19 @@ setCurrentClass = async (event) => {
 //this async function takes the click event from an individual class card
 // it matches the id of the card with a class in the state classes array
 
-  const selectedClass = this.state.classes.filter(c => {
+  const selectedClass = this.state.classes.find(c => {
     return c.id === parseInt(event.target.id)
   })
 
   //then it calls an async function to convert the address of the class
   //into a coordinate pair for the google maps api
-  const address = await this.translateAddressToCoordinates(selectedClass[0].address).then(function (response) {
+  const address = await this.translateAddressToCoordinates(selectedClass.address).then(function (response) {
        return response
      })
 
 //finally it sets the state
   this.setState({
-    currentClass: selectedClass[0],
+    currentClass: selectedClass,
     address: address
   }, () => console.log('class container state change'))
 }
@@ -108,11 +101,12 @@ setCurrentClass = async (event) => {
   } catch(e){ console.log(e)}
 }
 
+//
 
 renderMap(){
   return (
     <div className="mapDiv">
-      <MapContainer address={this.state.address}/>
+      <MapContainer address={this.state.address || this.state.classes[0].address}/>
     </div>
   )
 }
@@ -129,11 +123,11 @@ renderMap(){
         <input className="ClassSearchBar" type="search" placeholder="Search by Gym or Class"/>
 
         <div className={this.state.view === "List" ? "CardContainer" : "SkinnyCardContainer"}>
-          {listCards(this.state.view, this.setCurrentClass)}
+          {this.state.classes ? listCards(this.state.view, this.state.classes, this.setCurrentClass) : null}
         </div>
         <div id="mapDiv">{this.state.view === "Map" ? this.renderMap() : null}
         </div>
-        <div>{this.state.currentClass.name ?  this.state.currentClass.name  :"New"}</div>
+        <div>{this.state.currentClass.name ?  this.state.currentClass.name  :""}</div>
 
       </div>
 

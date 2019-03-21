@@ -21,7 +21,6 @@ export class MapContainer extends React.Component {
       return this.props.address != this.state.address
   }
   componentWillReceiveProps(nextProps){
-    debugger
     if(this.props.address != this.state.address){
       this.setState({
         address: nextProps.address
@@ -45,7 +44,9 @@ export class MapContainer extends React.Component {
          }}
          zoom={15}  >
         <Marker onClick={this.onMarkerClick}
-                name={'Current location'} />
+                name={'Current location'}
+                position={this.state.address}
+        />
 
         <InfoWindow onClose={this.onInfoWindowClose}>
             <div>
