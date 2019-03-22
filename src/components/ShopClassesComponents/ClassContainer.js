@@ -17,7 +17,8 @@ export default class ClassContainer extends Component {
   }
 
   shouldComponentUpdate(prevProps, nextProps){
-      return ((this.props.locationFilters !== nextProps.locationFilters) || (this.props.typeFilters !== nextProps.typeFilters) || (this.props.gymFilters !== nextProps.gymFilters) || (this.props.priceFilters !== nextProps.priceFilters))
+    
+      return ((this.props.locationFilters !== nextProps.locationFilters) || (this.props.typeFilters !== nextProps.typeFilters) || (this.props.gymFilters !== nextProps.gymFilters) || (this.props.priceFilters !== nextProps.priceFilters) || (nextProps.view))
   }
 
   componentWillReceiveProps(nextProps){
