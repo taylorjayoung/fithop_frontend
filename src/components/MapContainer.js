@@ -20,6 +20,7 @@ export class MapContainer extends React.Component {
     console.log('Should update?')
       return this.props.address != this.state.address
   }
+  
   componentWillReceiveProps(nextProps){
     if(this.props.address != this.state.address){
       this.setState({

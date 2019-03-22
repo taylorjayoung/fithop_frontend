@@ -16,6 +16,36 @@ export default class ClassContainer extends Component {
     this.getClasses()
   }
 
+  shouldComponentUpdate(prevProps, nextProps){
+      return ((this.props.locationFilters != this.state.locationFilters) || (this.state.typeFilters != this.state.typeFilters) || (this.props.gymFilters != this.state.gymFilters) || (this.props.priceFilters != this.state.priceFilters))
+  }
+
+  componentWillReceiveProps(nextProps){
+      if( nextProps.locationFilters.length > 0 || nextProps.gymFilters.length > 0 ||  nextProps.priceFilters.length > 0 ||  nextProps.typeFilters.length > 0 ){
+      //matches will be the  classes that have a neighborhood attribute matching a location filter
+
+        const matches = this.state.classes.filter( c => {
+          return (
+            nextProps.locationFilters.includes(c.neighborhood) ||
+            nextProps.gymFilters.includes(c.gym) ||
+            nextProps.typeFilters.includes(c.type) ||
+            nextProps.priceFilters.includes(c.price)
+          )
+        })
+
+        this.setState({
+          priceFilters: nextProps.priceFilters || this.state.priceFilters,
+          typeFilters: nextProps.typeFilters || this.state.typeFilters,
+          locationFilters: nextProps.locationFilters || this.state.locationFilters,
+          gymFilters: nextProps.gymFilters  || this.state.gymFilters,
+          filteredClasses: matches
+        })
+      }
+      else {
+        this.setState({filteredClasses: this.state.classes})
+      }
+  }
+
   getClasses = () => {
     fetch("http://localhost:3000/fitness_classes")
     .then(res => res.json())
@@ -47,7 +77,12 @@ export default class ClassContainer extends Component {
     classes: null,
     view: "List",
     currentClass: "",
-    address: null
+    address: null,
+    locationFilters: [],
+    gymFilters: [],
+    priceFilters: [],
+    typeFilters: [],
+    filteredClasses: null
   })
 
   viewHandler = (event) => {
@@ -111,6 +146,7 @@ renderMap(){
   )
 }
 
+
   render(){
     return (
       <div className="ClassListingContainer">
@@ -123,7 +159,7 @@ renderMap(){
         <input className="ClassSearchBar" type="search" placeholder="Search by Gym or Class"/>
 
         <div className={this.state.view === "List" ? "CardContainer" : "SkinnyCardContainer"}>
-          {this.state.classes ? listCards(this.state.view, this.state.classes, this.setCurrentClass) : null}
+          {this.state.classes ? listCards(this.state.view, this.state.filteredClasses || this.state.classes, this.setCurrentClass) : null}
         </div>
         <div id="mapDiv">{this.state.view === "Map" ? this.renderMap() : null}
         </div>
