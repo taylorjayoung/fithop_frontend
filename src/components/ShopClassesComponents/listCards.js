@@ -1,10 +1,5 @@
 import React from 'react'
 
-function check(event){
-  const myElementToCheckIfClicksAreInsideOf = document.getElementsByClassName("FirstCard")
-  console.log(myElementToCheckIfClicksAreInsideOf[0].contains(event.target))
-}
-
 function mapClasses(view, classes, setCurrentClass){
   return classes.map( c => {
     return(

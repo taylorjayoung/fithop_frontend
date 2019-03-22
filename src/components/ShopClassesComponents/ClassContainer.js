@@ -17,7 +17,7 @@ export default class ClassContainer extends Component {
   }
 
   shouldComponentUpdate(prevProps, nextProps){
-      return ((this.props.locationFilters != this.state.locationFilters) || (this.state.typeFilters != this.state.typeFilters) || (this.props.gymFilters != this.state.gymFilters) || (this.props.priceFilters != this.state.priceFilters))
+      return ((this.props.locationFilters !== nextProps.locationFilters) || (this.props.typeFilters !== nextProps.typeFilters) || (this.props.gymFilters !== nextProps.gymFilters) || (this.props.priceFilters !== nextProps.priceFilters))
   }
 
   componentWillReceiveProps(nextProps){
@@ -32,7 +32,6 @@ export default class ClassContainer extends Component {
             nextProps.priceFilters.includes(c.price)
           )
         })
-
         this.setState({
           priceFilters: nextProps.priceFilters || this.state.priceFilters,
           typeFilters: nextProps.typeFilters || this.state.typeFilters,
@@ -42,7 +41,13 @@ export default class ClassContainer extends Component {
         })
       }
       else {
-        this.setState({filteredClasses: this.state.classes})
+          this.setState({
+            priceFilters: nextProps.priceFilters || this.state.priceFilters,
+            typeFilters: nextProps.typeFilters || this.state.typeFilters,
+            locationFilters: nextProps.locationFilters || this.state.locationFilters,
+            gymFilters: nextProps.gymFilters  || this.state.gymFilters,
+            filteredClasses: this.state.classes
+          })
       }
   }
 
@@ -51,8 +56,9 @@ export default class ClassContainer extends Component {
     .then(res => res.json())
     .then( jsonData => {
       this.setState({
-        classes: jsonData
-      }, () => console.log(this.state.classes))
+        classes: jsonData,
+        filteredClasses: jsonData
+      })
     })
     .catch(e => console.log(e))
   }
@@ -92,7 +98,7 @@ export default class ClassContainer extends Component {
       }
       this.setState({
         view: "List"
-      })
+      }, () => console.log(this.state.view))
     }
 
     else if(event.target.innerText === "Map"){
@@ -101,7 +107,7 @@ export default class ClassContainer extends Component {
       }
       this.setState({
         view: "Map"
-      })
+      }, () => console.log(this.state.view))
     }
 
   }
@@ -125,7 +131,7 @@ setCurrentClass = async (event) => {
   this.setState({
     currentClass: selectedClass,
     address: address
-  }, () => console.log('class container state change'))
+  })
 }
 
 
@@ -159,11 +165,11 @@ renderMap(){
         <input className="ClassSearchBar" type="search" placeholder="Search by Gym or Class"/>
 
         <div className={this.state.view === "List" ? "CardContainer" : "SkinnyCardContainer"}>
-          {this.state.classes ? listCards(this.state.view, this.state.filteredClasses || this.state.classes, this.setCurrentClass) : null}
+          {this.state.filteredClasses ? listCards(this.state.view, this.state.filteredClasses, this.setCurrentClass) : null}
         </div>
-        <div id="mapDiv">{this.state.view === "Map" ? this.renderMap() : null}
-        </div>
-        <div>{this.state.currentClass.name ?  this.state.currentClass.name  :""}</div>
+
+        <div id="mapDiv">{this.state.view === "Map" ? this.renderMap() : null} </div>
+        <div>{this.state.currentClass.name ?  this.state.currentClass.name  :""} </div>
 
       </div>
 

@@ -22,10 +22,10 @@ export default class ShopClasses extends Component {
   }
 
   locationRemoveFilter = (filter) => {
-    const indexOfFilterToRemove = this.state.locationFilters.indexOf(this.state.locationFilters.find(f => f === filter))
-    const updatedFilters = this.state.locationFilters.splice(indexOfFilterToRemove, 1)
+    const arrayCopy = this.state.locationFilters
+    const arrayFiltered = arrayCopy.filter(location => location !== filter)
     this.setState({
-      locationFilters: updatedFilters
+      locationFilters: arrayFiltered
     })
   }
 
@@ -40,10 +40,10 @@ export default class ShopClasses extends Component {
   }
 
   gymRemoveFilter = (filter) => {
-    const indexOfFilterToRemove = this.state.gymFilters.indexOf(this.state.gymFilters.find(f => f === filter))
-    const updatedFilters = this.state.gymFilters.splice(indexOfFilterToRemove, 1)
+    const arrayCopy = this.state.gymFilters
+    const arrayFiltered = arrayCopy.filter(gym => gym !== filter)
     this.setState({
-      gymFilters: updatedFilters
+      gymFilters: arrayFiltered
     })
   }
 
@@ -58,10 +58,10 @@ export default class ShopClasses extends Component {
   }
 
   priceRemoveFilter = (filter) => {
-    const indexOfFilterToRemove = this.state.priceFilters.indexOf(this.state.priceFilters.find(f => f === filter))
-    const updatedFilters = this.state.priceFilters.splice(indexOfFilterToRemove, 1)
+    const arrayCopy = this.state.priceFilters
+    const arrayFiltered = arrayCopy.filter(price => price !== filter)
     this.setState({
-      priceFilters: updatedFilters
+      priceFilters: arrayFiltered
     })
   }
 
@@ -76,10 +76,10 @@ export default class ShopClasses extends Component {
   }
 
   typeRemoveFilter = (filter) => {
-    const indexOfFilterToRemove = this.state.typeFilters.indexOf(this.state.typeFilters.find(f => f === filter))
-    const updatedFilters = this.state.typeFilters.splice(indexOfFilterToRemove, 1)
+    const arrayCopy = this.state.typeFilters
+    const arrayFiltered = arrayCopy.filter(type => type !== filter)
     this.setState({
-      typeFilters: updatedFilters
+      typeFilters: arrayFiltered
     })
   }
 
