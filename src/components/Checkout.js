@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import  './Checkout.css'
+import PaypalButton from './PaypalButton'
 
 
 export default class Checkout extends Component {
@@ -14,6 +15,7 @@ export default class Checkout extends Component {
   render(){
     return (
       <div className="CheckoutWrapper">
+        <PaypalButton />
 
       </div>
 
