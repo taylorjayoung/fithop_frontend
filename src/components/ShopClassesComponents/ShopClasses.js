@@ -8,7 +8,8 @@ export default class ShopClasses extends Component {
     locationFilters: [],
     gymFilters: [],
     priceFilters: [],
-    typeFilters: []
+    typeFilters: [],
+    displayFilterBar: true
   }
 
   locationCheckHandler = (event) => {
@@ -83,19 +84,32 @@ export default class ShopClasses extends Component {
     })
   }
 
+  filterBarHandler = () => {
+    this.setState({
+      displayFilterBar: !this.state.displayFilterBar
+    })
+  }
 
   render(){
     return (
       <div className="ShopContainer">
         <div className="ShopContainerHeader"> <h1> ShopContainer </h1> </div>
+        {this.state.displayFilterBar ?
         <FilterBar
-            locationCheckHandler={this.locationCheckHandler}
-            gymCheckHandler={this.gymCheckHandler}
-            priceCheckHandler={this.priceCheckHandler}
-            typeCheckHandler={this.typeCheckHandler}
+          locationCheckHandler={this.locationCheckHandler}
+          gymCheckHandler={this.gymCheckHandler}
+          priceCheckHandler={this.priceCheckHandler}
+          typeCheckHandler={this.typeCheckHandler}
+            /> : null}
 
-            />
-        <ClassContainer locationFilters={this.state.locationFilters} gymFilters={this.state.gymFilters}  priceFilters={this.state.priceFilters} typeFilters={this.state.typeFilters} />
+        <ClassContainer
+          locationFilters={this.state.locationFilters}
+          gymFilters={this.state.gymFilters}
+          priceFilters={this.state.priceFilters}
+          typeFilters={this.state.typeFilters}
+          filterBarHandler={this.filterBarHandler}
+          displaySearchAndViewTab={this.state.displayFilterBar}
+          />
       </div>
     )
   }

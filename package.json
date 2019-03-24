@@ -5,6 +5,7 @@
   "dependencies": {
     "google-maps-react": "^2.0.2",
     "react": "^16.8.4",
+    "react-async-script-loader": "^0.3.0",
     "react-dom": "^16.8.4",
     "react-geocode": "^0.1.2",
     "react-scripts": "2.1.8"

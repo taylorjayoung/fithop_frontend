@@ -3,6 +3,8 @@ import MapContainer from '../MapContainer'
 import GoogleApiWrapper from '../MapContainer'
 import './ClassContainer.css'
 import Geocode from "react-geocode";
+import ClassInfo from './ClassInfo'
+import Checkout from '../Checkout'
 import listCards from "./listCards"
 export default class ClassContainer extends Component {
   constructor(props){
@@ -17,7 +19,7 @@ export default class ClassContainer extends Component {
   }
 
   shouldComponentUpdate(prevProps, nextProps){
-    
+
       return ((this.props.locationFilters !== nextProps.locationFilters) || (this.props.typeFilters !== nextProps.typeFilters) || (this.props.gymFilters !== nextProps.gymFilters) || (this.props.priceFilters !== nextProps.priceFilters) || (nextProps.view))
   }
 
@@ -89,7 +91,9 @@ export default class ClassContainer extends Component {
     gymFilters: [],
     priceFilters: [],
     typeFilters: [],
-    filteredClasses: null
+    filteredClasses: null,
+    renderClassInfo: false,
+    checkout: false
   })
 
   viewHandler = (event) => {
@@ -117,11 +121,12 @@ export default class ClassContainer extends Component {
 setCurrentClass = async (event) => {
 //this async function takes the click event from an individual class card
 // it matches the id of the card with a class in the state classes array
-
+  if((event.target.value === "View Class") || (event.target.value === "Book Now")){
+    return
+  }
   const selectedClass = this.state.classes.find(c => {
     return c.id === parseInt(event.target.id)
   })
-
   //then it calls an async function to convert the address of the class
   //into a coordinate pair for the google maps api
   const address = await this.translateAddressToCoordinates(selectedClass.address).then(function (response) {
@@ -143,8 +148,6 @@ setCurrentClass = async (event) => {
   } catch(e){ console.log(e)}
 }
 
-//
-
 renderMap(){
   return (
     <div className="mapDiv">
@@ -153,25 +156,55 @@ renderMap(){
   )
 }
 
+viewClass = (event, id) => {
+  event.preventDefault()
+  this.setState({
+    currentClass: this.state.classes.find(c => {
+      return c.id === id
+    }),
+    renderClassInfo: true
+  }, () => this.props.filterBarHandler())
+}
+
+bookNow = (event, id) => {
+  event.preventDefault()
+  this.setState({
+    currentClass:this.state.classes.find(c => {
+      return c.id === id
+    }),
+    checkout: true
+  }, () => this.props.filterBarHandler())
+}
+
+displaySearch = () => {
+  debugger
+  return (
+    <>
+      <div className="ViewControlTab">
+        <div className="ListView" onClick={(event)=> this.viewHandler(event)} >List</div>
+        <div className="MapView"  onClick={(event)=> this.viewHandler(event)}>Map</div>
+      </div>
+      <h2 className="ClassContainerHeader"> Class container </h2>
+      <input className="ClassSearchBar" type="search" placeholder="Search by Gym or Class"/>
+    < />
+  )
+}
 
   render(){
     return (
       <div className="ClassListingContainer">
-        <div className="ViewControlTab">
-          <div className="ListView" onClick={(event)=> this.viewHandler(event)} >List</div>
-          <div className="MapView"  onClick={(event)=> this.viewHandler(event)}>Map</div>
-        </div>
-
-        <h2 className="ClassContainerHeader"> Class container </h2>
-        <input className="ClassSearchBar" type="search" placeholder="Search by Gym or Class"/>
+        {this.props.displaySearchAndViewTab ?  this.displaySearch() :  null}
 
         <div className={this.state.view === "List" ? "CardContainer" : "SkinnyCardContainer"}>
-          {this.state.filteredClasses ? listCards(this.state.view, this.state.filteredClasses, this.setCurrentClass) : null}
+          {this.state.filteredClasses ? listCards(this.state.view, this.state.filteredClasses, this.setCurrentClass, this.viewClass,
+          this.bookNow) : null}
         </div>
 
         <div id="mapDiv">{this.state.view === "Map" ? this.renderMap() : null} </div>
         <div>{this.state.currentClass.name ?  this.state.currentClass.name  :""} </div>
 
+        {this.state.renderClassInfo ? <ClassInfo class={this.state.currentClass} /> : null }
+        {this.state.checkout ? <Checkout class={this.state.currentClass} /> : null }
       </div>
 
     )
