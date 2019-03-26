@@ -1,0 +1,10 @@
+.CheckoutWrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
+.CheckoutBox {
+  border: 1px black solid;
+}
