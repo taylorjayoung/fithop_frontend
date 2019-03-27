@@ -5,17 +5,20 @@
   display: inline-block;
 }
 
-.FilterBar{
-  position: absolute;
-  margin-top: 3%;
-  border: 1px black solid;
+.FilterBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: 100px;
   height: 85%;
-  width: 12vw;
+  width: 220px;
   text-align: left;
-  overflow:overlay
+  overflow: overlay;
+}
+.FilterBar form {
 }
 
-.LocationPreferenceDiv{
+.LocationPreferenceDiv {
   border: 1px pink solid;
   padding-top: 2vh;
   padding-bottom: 2vh;
@@ -23,24 +26,23 @@
   white-space: normal;
   display: flex;
 }
-.PricePreferenceDiv{
+.PricePreferenceDiv {
   border: 1px pink solid;
   padding-top: 2vh;
   padding-bottom: 2vh;
   margin: 1vh;
   white-space: normal;
   display: flex;
-  overflow:overlay
-
+  overflow: overlay;
 }
-.TypePreferenceDiv{
+.TypePreferenceDiv {
   border: 1px pink solid;
   padding-top: 2vh;
   padding-bottom: 2vh;
   margin: 1vh;
   white-space: normal;
   display: flex;
-  overflow:overlay
+  overflow: overlay;
 }
 
 .GymPreferenceDiv {
@@ -50,33 +52,33 @@
   margin: 1vh;
   white-space: normal;
   display: flex;
-  overflow:overlay
+  overflow: overlay;
 }
 
-.gymListing{
+.gymListing {
   float: left;
   position: relative;
   flex-direction: column;
-  width: 95%
+  width: 95%;
 }
 
-.locationListing{
+.locationListing {
   float: left;
   position: relative;
   flex-direction: column;
-  width: 95%
+  width: 95%;
 }
 
-.priceListing{
+.priceListing {
   float: left;
   position: relative;
   flex-direction: column;
-  width: 95%
+  width: 95%;
 }
 
-.typeListing{
+.typeListing {
   float: left;
   position: relative;
   flex-direction: column;
-  width: 95%
+  width: 95%;
 }

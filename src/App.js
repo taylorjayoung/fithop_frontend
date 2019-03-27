@@ -11,7 +11,7 @@ import Backdrop from "./components/Backdrop/Backdrop";
 
 class App extends Component {
   state = {
-    home: false,
+    home: true,
     showLogin: false,
     showSignUp: false,
     exploreClasses: false,
