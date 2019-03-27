@@ -1,0 +1,32 @@
+.HeaderWrapper {
+  /* border: 1px black solid; */
+  position: absolute;
+  text-transform: uppercase;
+  line-height: 5rem;
+  text-align: center;
+  left: 50%;
+  top: 40%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.HeaderSpan {
+  border: 1px black solid;
+  */font: Serif;
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 2.25rem;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.AppHeader {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
