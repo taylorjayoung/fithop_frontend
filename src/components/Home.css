@@ -39,15 +39,23 @@ body {
   font-size: 3em;
   font-weight: bold;
   margin: 0;
+  cursor: pointer;
+}
+.ExploreClassesDiv:hover {
+  border-color: yellow;
+  text-decoration: none;
+}
+
+.ExploreClassesDiv:hover p {
+  color: yellow;
 }
 
 .ExploreClassesDiv {
   width: 500px;
   height: 75px;
-  background-color: black;
   margin: auto;
   text-align: center;
-  background-color: black;
+  background-color: #521751;
   margin: auto;
   opacity: 0.8;
   border-radius: 10px;
@@ -76,12 +84,11 @@ body {
 .SignUpLinkDiv {
   width: 500px;
   height: 75px;
-  background-color: black;
+  background-color: #521751;
   margin: auto;
   text-align: center;
-  background-color: black;
   margin: auto;
-  opacity: 0.85;
+  opacity: 0.9;
   border-radius: 10px;
   font-size: 1em;
   margin-top: 50%;
@@ -95,4 +102,15 @@ body {
   justify-content: space-around;
   box-sizing: border-box;
   margin: 0;
+  cursor: pointer;
+}
+
+.SignUpLinkDiv:hover {
+  border-color: #521751;
+  text-decoration: none;
+  background: white;
+}
+
+.SignUpLinkDiv:hover p {
+  color: #521751;
 }

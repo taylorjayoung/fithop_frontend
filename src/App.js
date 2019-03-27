@@ -121,7 +121,10 @@ class App extends Component {
           <SideDrawer show={this.state.sideDrawerOpen} />
           {backdrop}
           {this.state.home ? (
-            <Home handleClickSignUp={this.handleClickSignUp} />
+            <Home
+              handleClickSignUp={this.handleClickSignUp}
+              handleClickExplore={this.handleClickExplore}
+            />
           ) : null}
           {this.state.showLogin || this.state.showSignUp ? (
             <div id="login_background" />

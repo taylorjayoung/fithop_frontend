@@ -26,7 +26,7 @@ export default class Home extends Component {
             <div className="ExploreClassesDiv">
               <p
                 className="ExploreClassesLink"
-                onClick={this.props.handleClickSignUp}
+                onClick={this.props.handleClickExplore}
               >
                 Explore Classes
               </p>
