@@ -9,16 +9,24 @@ const toolbar = props => (
         <DrawerToggleButton click={props.drawerClickHandler} />
       </div>
       <div className="toolbar_logo">
-        <a href="/">The Logo</a>
+        <a href="/" style={{ fontSize: "3rem", fontWeight: "bold" }}>
+          FitHop
+        </a>
       </div>
       <div className="spacer"> </div>
       <div className="toolbar_items">
         <ul>
           <li>
-            <a href="/">Products</a>
+            <a onClick={props.handleClickExplore}>Classes</a>
           </li>
           <li>
-            <a href="/">Users</a>
+            <a>Gym Registration</a>
+          </li>
+          <li>
+            <a>Pricing</a>
+          </li>
+          <li onClick={props.handleClickLogin}>
+            <a>Login</a>
           </li>
         </ul>
       </div>

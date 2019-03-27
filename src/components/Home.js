@@ -5,10 +5,6 @@ import Backdrop from "./Backdrop/Backdrop";
 
 export default class Home extends Component {
   render() {
-    return (
-      <div>
-        <Toolbar />
-      </div>
-    );
+    return <div>Content</div>;
   }
 }

@@ -22,7 +22,9 @@ class App extends Component {
   };
 
   handleClickLogin = () => {
-    this.setState({ showLogin: true, home: false });
+    this.setState({ showLogin: true, home: false }, () => {
+      console.log(this.prevState, this.state);
+    });
   };
 
   handleClickSignUp = () => {
@@ -111,18 +113,15 @@ class App extends Component {
     return (
       <React.Fragment>
         <div style={{ height: "100%" }}>
-          <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
+          <Toolbar
+            drawerClickHandler={this.drawerToggleClickHandler}
+            handleClickLogin={this.handleClickLogin}
+            handleClickExplore={this.handleClickExplore}
+          />
           <SideDrawer show={this.state.sideDrawerOpen} />
           {backdrop}
-          <main style={{ marginTop: "64px" }}>
-            <p>This is Content</p>
-          </main>
           {this.state.home ? (
-            <Home
-              handleClickLogin={this.handleClickLogin}
-              handleClickExplore={this.handleClickExplore}
-              handleClickSignUp={this.handleClickSignUp}
-            />
+            <Home handleClickSignUp={this.handleClickSignUp} />
           ) : null}
           {this.state.showLogin || this.state.showSignUp ? (
             <div id="login_background" />
