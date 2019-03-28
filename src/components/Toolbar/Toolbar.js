@@ -25,13 +25,30 @@ const toolbar = props => (
           <li>
             <a>Pricing</a>
           </li>
-          <li onClick={props.handleClickLogin}>
-            <a>Login</a>
-          </li>
+
+          {props.loggedIn
+            ? renderProfileButton(props.renderProfile)
+            : renderLoginButton(props.handleClickLogin)}
         </ul>
       </div>
     </nav>
   </header>
 );
+
+function renderLoginButton(click) {
+  return (
+    <li onClick={click}>
+      <a>Login</a>
+    </li>
+  );
+}
+
+function renderProfileButton(click) {
+  return (
+    <li onClick={click}>
+      <a>Profile</a>
+    </li>
+  );
+}
 
 export default toolbar;

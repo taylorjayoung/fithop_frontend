@@ -22,9 +22,7 @@ class App extends Component {
   };
 
   handleClickLogin = () => {
-    this.setState({ showLogin: true, home: false }, () => {
-      console.log(this.prevState, this.state);
-    });
+    this.setState({ showLogin: true });
   };
 
   handleClickSignUp = () => {
@@ -34,12 +32,13 @@ class App extends Component {
   handleClickExplore = () => {
     this.setState({
       exploreClasses: true,
-      home: false
+      home: false,
+      renderProfile: false
     });
   };
 
   handleClickFalse = () => {
-    this.setState({ showLogin: false, showSignUp: false, home: true });
+    this.setState({ showLogin: false, showSignUp: false });
   };
 
   handleClickHome = () => {
@@ -53,7 +52,8 @@ class App extends Component {
       loggedIn: true,
       showSignUp: false,
       showLogin: false,
-      exploreClasses: true
+      exploreClasses: true,
+      home: false
     });
   };
 
@@ -117,6 +117,8 @@ class App extends Component {
             drawerClickHandler={this.drawerToggleClickHandler}
             handleClickLogin={this.handleClickLogin}
             handleClickExplore={this.handleClickExplore}
+            renderProfile={this.renderProfile}
+            loggedIn={this.state.loggedIn}
           />
           <SideDrawer show={this.state.sideDrawerOpen} />
           {backdrop}

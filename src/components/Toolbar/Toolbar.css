@@ -5,6 +5,7 @@
   width: 100%;
   background: #521751;
   height: 84px;
+  z-index: 100;
 }
 
 .toolbar_navigation {
@@ -20,6 +21,7 @@
   text-decoration: none;
   margin-right: 10px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .toolbar_items a:hover,

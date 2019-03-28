@@ -12,6 +12,19 @@ export default class ClassContainer extends Component {
     );
   }
 
+  state = {
+    classes: null,
+    view: "List",
+    currentClass: "",
+    address: null,
+    locationFilters: [],
+    gymFilters: [],
+    priceFilters: [],
+    typeFilters: [],
+    filteredClasses: null,
+    searchterm: ""
+  };
+
   async componentDidMount() {
     Geocode.setApiKey("AIzaSyDMIBD2wef6TI6cS-AkncJd7FmaSnWfoyM");
     this.getClasses();
@@ -97,18 +110,6 @@ export default class ClassContainer extends Component {
     });
   };
 
-  state = {
-    classes: null,
-    view: "List",
-    currentClass: "",
-    address: null,
-    locationFilters: [],
-    gymFilters: [],
-    priceFilters: [],
-    typeFilters: [],
-    filteredClasses: null
-  };
-
   viewHandler = event => {
     if (event.target.innerText === "List") {
       if (this.state.view === "List") {
@@ -180,7 +181,11 @@ export default class ClassContainer extends Component {
       </div>
     );
   }
-
+  searchHandler = event => {
+    this.setState({
+      searchterm: event.target.value
+    });
+  };
   displaySearch = () => {
     return (
       <>
@@ -201,6 +206,7 @@ export default class ClassContainer extends Component {
           className="ClassSearchBar"
           type="search"
           placeholder="Search by Gym or Class"
+          onChange={event => this.searchHandler(event)}
         />
       </>
     );
@@ -222,7 +228,8 @@ export default class ClassContainer extends Component {
                 this.state.filteredClasses,
                 this.setCurrentClass,
                 this.props.viewClass,
-                this.props.bookNow
+                this.props.bookNow,
+                this.state.searchterm
               )
             : null}
         </div>
