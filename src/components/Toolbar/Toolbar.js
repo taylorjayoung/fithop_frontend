@@ -9,7 +9,7 @@ const toolbar = props => (
         <DrawerToggleButton click={props.drawerClickHandler} />
       </div>
       <div className="toolbar_logo">
-        <a href="/" style={{ fontSize: "3rem", fontWeight: "bold" }}>
+        <a href="/" style={{ fontSize: "2.5rem", fontWeight: "bold" }}>
           FitHop
         </a>
       </div>

@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   background: #521751;
-  height: 84px;
+  height: 4rem;
   z-index: 100;
 }
 
@@ -37,6 +37,7 @@
 }
 .toolbar_items li {
   padding: 0.5rem;
+  font-size: 1rem;
 }
 
 .toolbar_logo a {

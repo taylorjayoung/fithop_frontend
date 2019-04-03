@@ -16,23 +16,26 @@ export default class Home extends Component {
           <div className="line" />
           <div className="line" />
         </div>
+
         <div className="HomeDiv">
+
           <div className="Div1">
             <div className="SolganDiv">
               <span>Fitness Classes </span>
               <span>For 90% Off </span>
             </div>
+
             <div className="SignUpDiv">
-              <div className="SignUpLinkDiv">
                 <p
                   className="SignUpLink"
                   onClick={this.props.handleClickSignUp}
                 >
                   Sign Up Free
                 </p>
-              </div>
             </div>
+
           </div>
+
           <div className="Div2">
             <div className="ImageDiv">
               <div className="ExploreClassesDiv">
@@ -45,6 +48,7 @@ export default class Home extends Component {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     );
