@@ -237,9 +237,7 @@ export default class ClassContainer extends Component {
         <div id="mapDiv">
           {this.state.view === "Map" ? this.renderMap() : null}{" "}
         </div>
-        <div>
-          {this.state.currentClass.name ? this.state.currentClass.name : ""}{" "}
-        </div>
+
       </div>
     );
   }
