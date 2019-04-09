@@ -25,19 +25,21 @@ export default function listCards(
             Class: {c.name}, Price: {c.price}, Location: {c.address}, Time:{" "}
             {c.time}
           </div>
-          <div className="MoreInfoButtonDiv">
-            <input
-              type="button"
-              onClick={(event, id) => viewClass(event, c.id)}
-              value="View Class"
-            />
-          </div>
-          <div className="BookButtonDiv">
-            <input
-              type="button"
-              onClick={(event, id) => bookNow(event, c.id)}
-              value="Book Now"
-            />
+          <div className="listCards-button-container">
+            <div className="MoreInfoButtonDiv">
+              <input
+                type="button"
+                onClick={(event, id) => viewClass(event, c.id)}
+                value="View Class"
+                />
+            </div>
+            <div className="BookButtonDiv">
+              <input
+                type="button"
+                onClick={(event, id) => bookNow(event, c.id)}
+                value="Book Now"
+                />
+            </div>
           </div>
         </div>
       );

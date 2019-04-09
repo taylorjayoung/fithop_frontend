@@ -100,6 +100,13 @@ body {
   padding: 0.5rem;
 }
 
+@media only screen and (max-width: 425px) {
+  .SolganDiv {
+    margin-top: 10%;
+  }
+}
+
+
 .SignUpDiv {
   position: absolute;
   width: 100%;

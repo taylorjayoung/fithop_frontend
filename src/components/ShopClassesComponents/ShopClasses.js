@@ -149,6 +149,7 @@ export default class ShopClasses extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="ShopContainer">
         <div className="ShopContainerHeader"> </div>

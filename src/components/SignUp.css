@@ -1,5 +1,4 @@
 #SignUp {
-  /* border: 1px white solid; */
   position: absolute;
   top: 0;
   width: 100%;
@@ -9,7 +8,6 @@
 }
 
 #SignUp_container {
-  /* border: 1px black solid; */
   border-radius: 5px;
   position: relative;
   z-index: 99999;
@@ -17,28 +15,31 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  width: 50%;
-  height: 80%;
+  width: 40%;
+  height: 70%;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 1);
 }
 
-.close {
-  /* border: 1px black solid; */
+.close.signup {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 #SignUp_form_container {
-  /* border: 1px black solid; */
   position: absolute;
   left: 50%;
   top: 50%;
+  width: 100%;
   transform: translate(-50%, -50%);
 }
 
 .SignUp_form.input {
   border: 1px #e5e5e5 solid;
   display: block;
-  width: 30rem;
-  height: 3rem;
+  width: 85%;
+  margin: auto;
   margin-top: 1rem;
   font-family: inherit;
   font-size: 1rem;
@@ -46,23 +47,22 @@
   box-sizing: border-box;
   border-radius: 2px;
   color: inherit;
-  resize: none;
 }
 
 .SignUp_form.input:focus {
-outline: none;
-border-bottom: 3px solid #323330;
+  outline: none;
+  border-bottom: 3px solid grey;
 }
 
 .SignUp_form.input::placeholder {
-color: #999;
+  color: #999;
 }
 
 .SignUp_form_label {
-  /* border: 1px blue solid; */
-  font-size: 1rem;
-  margin-left: .5rem;
+  width: 82%;
+  margin: auto;
   margin-top: .5rem;
+  font-size: 1rem;
   display: block;
   transition: all .3s;
   color: #999
@@ -77,6 +77,23 @@ color: #999;
 .btn.SignUp{
   font-size: 1.25rem;
   padding: .5rem;
-  margin: 1.5rem auto;
   display: block;
+  margin: auto;
+  margin-top: 1rem;
+  width: 30%;
+  color: #521751;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: 3px solid #521751;
+  opacity: .9;
+}
+
+.btn.SignUp:hover {
+  border: 3px solid yellow;
+  background-color: #571751;
+  color: white;
 }

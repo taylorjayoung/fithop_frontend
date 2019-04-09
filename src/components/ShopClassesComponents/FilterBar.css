@@ -9,76 +9,70 @@
   position: fixed;
   top: 0;
   left: 0;
-  margin-top: 100px;
+  margin-top: 5%;
   height: 85%;
-  width: 220px;
+  width: 15%;
+  padding-bottom: 1rem;
+  box-sizing: border-box;
   text-align: left;
-  overflow: overlay;
+  /* overflow: overlay; */
+  overflow-y: scroll;
 }
 .FilterBar form {
 }
 
 .LocationPreferenceDiv {
-  border: 1px pink solid;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  margin: 1vh;
+  padding: .5rem 1rem;
   white-space: normal;
   display: flex;
+  flex-wrap: wrap;
 }
 .PricePreferenceDiv {
-  border: 1px pink solid;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  margin: 1vh;
+  padding: .5rem 1rem;
   white-space: normal;
   display: flex;
-  overflow: overlay;
+  flex-wrap: wrap;
 }
 .TypePreferenceDiv {
-  border: 1px pink solid;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  margin: 1vh;
+  padding: .5rem 1rem;
   white-space: normal;
   display: flex;
-  overflow: overlay;
+  flex-wrap: wrap;
 }
 
 .GymPreferenceDiv {
-  border: 1px pink solid;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  margin: 1vh;
+  padding: .5rem 1rem;
   white-space: normal;
   display: flex;
-  overflow: overlay;
+  flex-wrap: wrap;
 }
 
 .gymListing {
-  float: left;
-  position: relative;
-  flex-direction: column;
-  width: 95%;
+  display: block;
 }
 
 .locationListing {
-  float: left;
-  position: relative;
-  flex-direction: column;
-  width: 95%;
+  display: block;
 }
 
 .priceListing {
-  float: left;
-  position: relative;
-  flex-direction: column;
-  width: 95%;
+  display: block;
 }
 
 .typeListing {
-  float: left;
-  position: relative;
-  flex-direction: column;
-  width: 95%;
+  display: block;
+}
+
+.checkbox {
+  position: absolute;
+  right: 0;
+  margin-right: 1.5rem;
+}
+
+.filter-bar__header {
+  font-weight: bold;
+}
+
+.filter-bar__header.location {
+  margin-top: .5rem;
 }

@@ -44,7 +44,7 @@ class SignUp extends Component {
     return (
       <div id="SignUp">
         <div id="SignUp_container">
-          <div className="close" onClick={this.props.handleClickFalse}>X</div>
+          <div className="close signup" onClick={this.props.handleClickFalse}>X</div>
           <form id="SignUp_form_container" onSubmit={this.handleSubmitSignUp}>
             <input className="SignUp_form input" id="name" type="text" placeholder="Name" name="name" value={this.state.name} onChange={this.handleChangeInput}></input>
             <label className="SignUp_form_label label" htmlFor="Name">Name</label>
