@@ -22,11 +22,17 @@
 }
 
 .LocationPreferenceDiv {
-  padding: .5rem 1rem;
+  border: 1px solid #571751;
+  margin: .5rem 1rem;
   white-space: normal;
   display: flex;
   flex-wrap: wrap;
+  background-color: rgba(87, 23, 82, .6);
+  color: white;
+  border-radius: 4px;
+  padding: .5rem 1rem;
 }
+
 .PricePreferenceDiv {
   padding: .5rem 1rem;
   white-space: normal;

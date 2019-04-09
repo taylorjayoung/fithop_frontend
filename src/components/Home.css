@@ -1,5 +1,5 @@
 body {
-  background: pink;
+  background: rgba(255, 192, 203, .7);
   opacity: 0.9;
   z-index: -100;
 }
