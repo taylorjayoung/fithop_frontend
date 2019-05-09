@@ -2,14 +2,25 @@ import React, {Component} from 'react'
 import './FilterBar.css'
 
 export default class FilterBar extends Component {
+  state = {
+    location: false,
+    price: false,
+    gym: false,
+    type: false
+  }
+
+  handleClickLocation = () => {
+    this.setState ({ location : !this.state.location })
+  }
+
   render(){
     return (
-        <div className="FilterBar">
-          <div className="LocationPreferenceDiv">
+      <div className="FilterBar">
 
-            <form>
-            <p className="filter-bar__header location">Location</p>
-
+        <div className="LocationPreferenceDiv">
+          <form>
+            <div onClick={this.handleClickLocation} className="filter-bar__header location">Location</div>
+            <div className="filter-bar__content location">
               <label onChange={(event) => this.props.locationCheckHandler(event)} className="locationListing">
                 UES
                 <input type="checkbox"value="UES" className="checkbox"/>
@@ -74,37 +85,34 @@ export default class FilterBar extends Component {
                 Soho
                 <input type="checkbox"value="Soho" className="checkbox"/>
               </label>
+            </div>
+          </form>
+        </div>
 
-            </form>
+        <div className="PricePreferenceDiv">
+          <form>
+            <div className="filter-bar__header price">Price</div>
+            <div className="filter-bar__content price">
+              <label onChange={(event) => this.props.priceCheckHandler(event)} className="priceListing">
+                5-10
+                <input type="checkbox"value="5-10" className="checkbox"/>
+              </label>
+              <label onChange={(event) => this.props.priceCheckHandler(event)} className="priceListing">
+                10-20
+                <input type="checkbox"value="10-20" className="checkbox"/>
+              </label>
+              <label onChange={(event) => this.props.priceCheckHandler(event)} className="priceListing">
+                20+
+                <input type="checkbox"value="20+" className="checkbox"/>
+              </label>
+            </div>
+          </form>
+        </div>
 
-          </div>
-          <div className="PricePreferenceDiv">
-
-            <form>
-              <p className="filter-bar__header">Price</p>
-
-                <label onChange={(event) => this.props.priceCheckHandler(event)} className="priceListing">
-                  5-10
-                  <input type="checkbox"value="5-10" className="checkbox"/>
-                </label>
-
-                <label onChange={(event) => this.props.priceCheckHandler(event)} className="priceListing">
-                  10-20
-                  <input type="checkbox"value="10-20" className="checkbox"/>
-                </label>
-
-                <label onChange={(event) => this.props.priceCheckHandler(event)} className="priceListing">
-                  20+
-                  <input type="checkbox"value="20+" className="checkbox"/>
-                </label>
-
-            </form>
-
-          </div>
-
-          <div className="GymPreferenceDiv">
-            <form>
-              <p className="filter-bar__header">Gym</p>
+        <div className="GymPreferenceDiv">
+          <form>
+            <div className="filter-bar__header gym">Gym</div>
+            <div className="filter-bar__content gym">
               <label onChange={(event) => this.props.gymCheckHandler(event)} className="gymListing">
                 Barry's Bootcamp
                 <input type="checkbox" value="Barry's Bootcamp"  className="checkbox"/>
@@ -134,47 +142,43 @@ export default class FilterBar extends Component {
                 KickAxe
                 <input type="checkbox" value="KickAxe"  className="checkbox"/>
               </label>
-
-            </form>
-
-          </div>
-
-
-          <div className="TypePreferenceDiv">
-
-            <form>
-
-              <p className="filter-bar__header">Type</p>
-
-                <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
-                  KickBoxing
-                  <input type="checkbox"value="KickBoxing" className="checkbox"/>
-                </label>
-
-                <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
-                  Cycling
-                  <input type="checkbox"value="Cycling" className="checkbox"/>
-                </label>
-
-                <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
-                  Cardio
-                  <input type="checkbox"value="Cardio" className="checkbox"/>
-                </label>
-
-                <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
-                  Bootcamp
-                  <input type="checkbox"value="Bootcamp" className="checkbox"/>
-                </label>
-
-                <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
-                  Running
-                  <input type="checkbox"value="Running" className="checkbox"/>
-                </label>
-
-            </form>
-
-          </div>
+            </div>
+          </form>
         </div>
+
+
+        <div className="TypePreferenceDiv">
+          <form>
+            <div className="filter-bar__header type">Type</div>
+            <div className="filter-bar__content type">
+              <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
+                KickBoxing
+                <input type="checkbox"value="KickBoxing" className="checkbox"/>
+              </label>
+
+              <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
+                Cycling
+                <input type="checkbox"value="Cycling" className="checkbox"/>
+              </label>
+
+              <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
+                Cardio
+                <input type="checkbox"value="Cardio" className="checkbox"/>
+              </label>
+
+              <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
+                Bootcamp
+                <input type="checkbox"value="Bootcamp" className="checkbox"/>
+              </label>
+
+              <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
+                Running
+                <input type="checkbox"value="Running" className="checkbox"/>
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
     )
   }
 }

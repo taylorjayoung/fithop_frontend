@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./ShopClasses.css";
 import FilterBar from "./FilterBar";
 import ClassContainer from "./ClassContainer";
@@ -151,7 +151,7 @@ export default class ShopClasses extends Component {
   render() {
     console.log(this.state);
     return (
-      <div className="ShopContainer">
+      <>
         <div className="ShopContainerHeader"> </div>
         {this.state.displayFilterBar ? (
           <FilterBar
@@ -191,7 +191,7 @@ export default class ShopClasses extends Component {
             rerenderClasses={this.rerenderClasses}
           />
         ) : null}
-      </div>
+      < />
     );
   }
 }
