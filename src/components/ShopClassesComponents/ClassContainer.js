@@ -14,7 +14,7 @@ export default class ClassContainer extends Component {
 
   state = {
     classes: null,
-    view: "List",
+    view: true,
     currentClass: "",
     address: null,
     locationFilters: [],
@@ -109,31 +109,6 @@ export default class ClassContainer extends Component {
       )
     });
   };
-
-  viewHandler = event => {
-    if (event.target.innerText === "List") {
-      if (this.state.view === "List") {
-        return;
-      }
-      this.setState(
-        {
-          view: "List"
-        },
-        () => console.log(this.state.view)
-      );
-    } else if (event.target.innerText === "Map") {
-      if (this.state.view === "Map") {
-        return;
-      }
-      this.setState(
-        {
-          view: "Map"
-        },
-        () => console.log(this.state.view)
-      );
-    }
-  };
-
   setCurrentClass = async event => {
     //this async function takes the click event from an individual class card
     // it matches the id of the card with a class in the state classes array
@@ -189,19 +164,6 @@ export default class ClassContainer extends Component {
   displaySearch = () => {
     return (
       <>
-        {this.props.renderingCheckoutOrInfo ? null : (
-          <div className="ViewControlTab">
-            <div
-              className="ListView"
-              onClick={event => this.viewHandler(event)}
-            >
-              List
-            </div>
-            <div className="MapView" onClick={event => this.viewHandler(event)}>
-              Map
-            </div>
-          </div>
-        )}
         <input
           className="ClassSearchBar"
           type="search"
@@ -235,7 +197,7 @@ export default class ClassContainer extends Component {
         </div>
 
         <div id="mapDiv">
-          {this.state.view === "Map" ? this.renderMap() : null}{" "}
+          {this.state.classes ? this.renderMap() : null}
         </div>
 
       </div>

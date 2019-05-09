@@ -1,5 +1,6 @@
 body {
-  background: rgba(255, 192, 203, .7);
+  /* background: rgba(100, 20, 150, .3); */
+  background: rgba(0, 0, 0, .1);
   opacity: 0.9;
   z-index: -100;
 }
@@ -16,6 +17,8 @@ body {
   background: gold;
   transform: skewX(-4deg);
   border: white solid 4px;
+  border-radius: 15px;
+
 }
 
 @media only screen and (max-width: 425px) {
@@ -24,6 +27,8 @@ body {
     height: 40%;
     width: 85%;
     transform: skewX(0deg);
+    border-radius: 15px;
+
   }
 }
 
@@ -40,6 +45,8 @@ body {
   overflow: hidden;
   transform: skewX(-4deg);
   border: white solid 4px;
+  border-radius: 15px;
+
 }
 
 @media only screen and (max-width: 425px) {
@@ -49,6 +56,8 @@ body {
     height: 40%;
     width: 85%;
     transform: skewX(0deg);
+    border-radius: 15px;
+
   }
 }
 
@@ -58,6 +67,7 @@ body {
   background-size: cover;
   height: 100%;
   width: 100%;
+
 }
 
 .ExploreClassesDiv {
