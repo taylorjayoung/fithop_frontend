@@ -10,7 +10,27 @@ export default class FilterBar extends Component {
   }
 
   handleClickLocation = () => {
+    let locationContent = document.getElementById("location")
     this.setState ({ location : !this.state.location })
+    {this.state.location ? locationContent.style.display = "flex" : locationContent.style.display = "none"}
+  }
+
+  handleClickPrice = () => {
+    let priceContent = document.getElementById("price")
+    this.setState ({ price : !this.state.price })
+    {this.state.price ? priceContent.style.display = "flex" : priceContent.style.display = "none"}
+  }
+
+  handleClickGym = () => {
+    let gymContent = document.getElementById("gym")
+    this.setState ({ gym : !this.state.gym })
+    {this.state.gym ? gymContent.style.display = "flex" : gymContent.style.display = "none"}
+  }
+
+  handleClickType = () => {
+    let typeContent = document.getElementById("type")
+    this.setState ({ type : !this.state.type})
+    {this.state.type ? typeContent.style.display = "flex" : typeContent.style.display = "none"}
   }
 
   render(){
@@ -20,7 +40,7 @@ export default class FilterBar extends Component {
         <div className="LocationPreferenceDiv">
           <form>
             <div onClick={this.handleClickLocation} className="filter-bar__header location">Location</div>
-            <div className="filter-bar__content location">
+            <div className="filter-bar__content location" id="location">
               <label onChange={(event) => this.props.locationCheckHandler(event)} className="locationListing">
                 UES
                 <input type="checkbox"value="UES" className="checkbox"/>
@@ -91,8 +111,8 @@ export default class FilterBar extends Component {
 
         <div className="PricePreferenceDiv">
           <form>
-            <div className="filter-bar__header price">Price</div>
-            <div className="filter-bar__content price">
+            <div onClick={this.handleClickPrice} className="filter-bar__header price">Price</div>
+            <div className="filter-bar__content price" id="price">
               <label onChange={(event) => this.props.priceCheckHandler(event)} className="priceListing">
                 5-10
                 <input type="checkbox"value="5-10" className="checkbox"/>
@@ -111,8 +131,8 @@ export default class FilterBar extends Component {
 
         <div className="GymPreferenceDiv">
           <form>
-            <div className="filter-bar__header gym">Gym</div>
-            <div className="filter-bar__content gym">
+            <div onClick={this.handleClickGym} className="filter-bar__header gym">Gym</div>
+            <div className="filter-bar__content gym" id="gym">
               <label onChange={(event) => this.props.gymCheckHandler(event)} className="gymListing">
                 Barry's Bootcamp
                 <input type="checkbox" value="Barry's Bootcamp"  className="checkbox"/>
@@ -149,8 +169,8 @@ export default class FilterBar extends Component {
 
         <div className="TypePreferenceDiv">
           <form>
-            <div className="filter-bar__header type">Type</div>
-            <div className="filter-bar__content type">
+            <div onClick={this.handleClickType} className="filter-bar__header type">Type</div>
+            <div className="filter-bar__content type" id="type">
               <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
                 KickBoxing
                 <input type="checkbox"value="KickBoxing" className="checkbox"/>
