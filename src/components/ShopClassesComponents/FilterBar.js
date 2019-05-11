@@ -14,11 +14,11 @@ export default class FilterBar extends Component {
     let priceContent = document.getElementById("price")
     let gymContent = document.getElementById("gym")
     let typeContent = document.getElementById("type")
+    this.setState ({ location : !this.state.location, price : false, gym : false, type : false })
+    {this.state.location ? locationContent.style.display = "none" : locationContent.style.display = "flex"}
     priceContent.style.display = "none"
     gymContent.style.display = "none"
     typeContent.style.display = "none"
-    this.setState ({ location : !this.state.location })
-    {this.state.location ? locationContent.style.display = "flex" : locationContent.style.display = "none"}
   }
 
   handleClickPrice = () => {
@@ -29,8 +29,8 @@ export default class FilterBar extends Component {
     locationContent.style.display = "none"
     gymContent.style.display = "none"
     typeContent.style.display = "none"
-    this.setState ({ price : !this.state.price })
-    {this.state.price ? priceContent.style.display = "flex" : priceContent.style.display = "none"}
+    this.setState ({ price : !this.state.price, location : false, gym : false, type : false })
+    {this.state.price ? priceContent.style.display = "none" : priceContent.style.display = "flex"}
   }
 
   handleClickGym = () => {
@@ -41,8 +41,8 @@ export default class FilterBar extends Component {
     locationContent.style.display = "none"
     priceContent.style.display = "none"
     typeContent.style.display = "none"
-    this.setState ({ gym : !this.state.gym })
-    {this.state.gym ? gymContent.style.display = "flex" : gymContent.style.display = "none"}
+    this.setState ({ gym : !this.state.gym, location : false, price : false, type : false })
+    {this.state.gym ? gymContent.style.display = "none" : gymContent.style.display = "flex"}
   }
 
   handleClickType = () => {
@@ -53,11 +53,12 @@ export default class FilterBar extends Component {
     locationContent.style.display = "none"
     priceContent.style.display = "none"
     gymContent.style.display = "none"
-    this.setState ({ type : !this.state.type})
-    {this.state.type ? typeContent.style.display = "flex" : typeContent.style.display = "none"}
+    this.setState ({ type : !this.state.type, location : false, price : false, gym : false })
+    {this.state.type ? typeContent.style.display = "none" : typeContent.style.display = "flex"}
   }
 
   render(){
+    console.log(this.state);
     return (
       <div className="FilterBar">
 
