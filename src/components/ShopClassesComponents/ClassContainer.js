@@ -1,15 +1,16 @@
 import React, { Component } from "react";
+import Geocode from "react-geocode";
+
+
 import MapContainer from "../MapContainer";
 import GoogleApiWrapper from "../MapContainer";
 import "./ClassContainer.css";
-import Geocode from "react-geocode";
 import listCards from "./listCards";
+
 export default class ClassContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.translateAddressToCoordinates = this.translateAddressToCoordinates.bind(
-      this
-    );
+  constructor(props){
+    super(props)
+    this.getCoordinatesArray = this.getCoordinatesArray.bind(this)
   }
 
   state = {
@@ -22,7 +23,8 @@ export default class ClassContainer extends Component {
     priceFilters: [],
     typeFilters: [],
     filteredClasses: null,
-    searchterm: ""
+    searchterm: "",
+    coordinatesArr: []
   };
 
   async componentDidMount() {
@@ -85,9 +87,13 @@ export default class ClassContainer extends Component {
           {
             classes: jsonData,
             filteredClasses: jsonData
+          }, () => {
+            this.getCoordinatesArray()
+
           },
           classes => this.props.setParentClasses(jsonData)
-        );
+        )
+
       })
       .catch(e => console.log(e));
   };
@@ -121,22 +127,18 @@ export default class ClassContainer extends Component {
     const selectedClass = this.state.classes.find(c => {
       return c.id === parseInt(event.target.id);
     });
-    //then it calls an async function to convert the address of the class
-    //into a coordinate pair for the google maps api
-    const address = await this.translateAddressToCoordinates(
-      selectedClass.address
-    ).then(function(response) {
-      return response;
-    });
 
-    //finally it sets the state
-    this.setState({
-      currentClass: selectedClass,
-      address: address
-    });
   };
 
-  async translateAddressToCoordinates(address) {
+  async getCoordinatesArray(){
+    const {classes} = this.state
+    const coordArray = await Promise.all(classes.map(c => {
+        if (c.address) return this.getCoordinates(c.address)
+    }))
+    this.setState({coordinatesArr: coordArray })
+  }
+
+  async getCoordinates(address){
     try {
       const result = await Geocode.fromAddress(address).then(
         response => response.results[0].geometry.location
@@ -145,13 +147,15 @@ export default class ClassContainer extends Component {
     } catch (e) {
       console.log(e);
     }
+
   }
 
   renderMap() {
     return (
       <div className="mapDiv">
         <MapContainer
-          address={this.state.address || this.state.classes[0].address}
+          classes={this.state.classes}
+          coordinatesArr={this.state.coordinatesArr}
         />
       </div>
     );

@@ -1,25 +1,33 @@
 import React from 'react'
 import {GoogleApiWrapper, Map, InfoWindow, Marker} from 'google-maps-react';
+import GoogleMapReact from 'google-maps-react';
+import Geocode from "react-geocode";
 
 
 export class MapContainer extends React.Component {
+  static defaultProps = {
+    center: {
+      lat: 4.76,
+      lng: 3.97
+    },
+    zoom: 11
+  }
   constructor(props){
     super(props)
     this.state = {
-      address: {lat: 0, lng:0},
-      renderMap: false
+      classes: props.classes,
+      renderMap: true
     }
   }
-
-  componentWillMount(){
+  async componentDidMount(){
     this.setState({
       address: this.props.address,
-      renderMap: true
+      renderMap: true,
     })
   }
 
+
   shouldComponentUpdate(prevProps, nextProps){
-    console.log('Should update?')
       return this.props.address != this.state.address
   }
 
@@ -36,43 +44,46 @@ export class MapContainer extends React.Component {
     width: '100%',
     height: '100%'
   }
-  // newMap(){
-  //   var map = new google.maps.Map(document.getElementById('map'), {
-  //     zoom: 10,
-  //     center: {lat: -33.9, lng: 151.2}
-  //   });
-  // }
+
+  renderMarkers = () => {
+    const { coordinatesArr } = this.props
+    console.log(coordinatesArr);
+    return coordinatesArr.map( coord => <Marker  position={coord}/>)
+  }
 
   returnMap(){
 
-    const map =  <Map
-                  google={this.props.google}
-                  style={this.style}
-                  center={{
-                     lat: this.state.address.lat,
-                     lng: this.state.address.lng
-                   }}
-                   zoom={15}  >
-                  <InfoWindow onClose={this.onInfoWindowClose}>
-                      <div>
-                        <h1>New York</h1>
-                      </div>
-                  </InfoWindow>
-                </Map>
-    const marker = <Marker
-            onClick={this.onMarkerClick}
-            map={map}
-            name={'Current location'}
-            position={this.state.address}
-    />
+    return(
+      <Map
+          google={this.props.google}
+          style={this.style}
+          zoom={this.props.zoom}
+          initialCenter={{
+            lat: 40.7634977,
+            lng: -73.96202439999999
+          }}
+          >
 
-
-    return(map)
+          <Marker
+            position={{lat: 40.7634977,
+                      lng: -73.96202439999999
+                    }}
+          />
+          {this.renderMarkers()}
+          <InfoWindow onClose={this.onInfoWindowClose}>
+              <div>
+                <h1>New York</h1>
+              </div>
+          </InfoWindow>
+        </Map>
+    )
   }
 
   render() {
+    const { renderMap } = this.state
+
     return(
-      this.state.renderMap ? this.returnMap() : null
+      renderMap ? this.returnMap()  : null
     )
   }
 }
