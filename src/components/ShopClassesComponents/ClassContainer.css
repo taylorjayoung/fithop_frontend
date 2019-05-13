@@ -36,6 +36,10 @@
   margin-top: 1.5rem;
 }
 
+.SkinnyCard:first-child {
+  margin-top: 0;
+}
+
 .SkinnyCard::after {
   content: "";
   background-image: url("https://images.unsplash.com/photo-1522956957021-9f2437e01594?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
