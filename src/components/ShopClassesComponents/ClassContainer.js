@@ -42,7 +42,7 @@ export default class ClassContainer extends Component {
     );
   }
 
-  componentWillReceiveProps(nextProps) {
+  async componentWillReceiveProps(nextProps) {
     if (
       nextProps.locationFilters.length > 0 ||
       nextProps.gymFilters.length > 0 ||
@@ -59,13 +59,15 @@ export default class ClassContainer extends Component {
           nextProps.priceFilters.includes(c.price)
         );
       });
+      const coords = await this.getCoordinatesArray(matches)
       this.setState({
         priceFilters: nextProps.priceFilters || this.state.priceFilters,
         typeFilters: nextProps.typeFilters || this.state.typeFilters,
         locationFilters:
           nextProps.locationFilters || this.state.locationFilters,
         gymFilters: nextProps.gymFilters || this.state.gymFilters,
-        filteredClasses: matches
+        filteredClasses: matches,
+        coordinatesArr: coords
       });
     } else {
       this.setState({
@@ -130,12 +132,19 @@ export default class ClassContainer extends Component {
 
   };
 
-  async getCoordinatesArray(){
-    const {classes} = this.state
-    const coordArray = await Promise.all(classes.map(c => {
-        if (c.address) return this.getCoordinates(c.address)
-    }))
-    this.setState({coordinatesArr: coordArray })
+  async getCoordinatesArray(matches){
+    if(!matches){
+      const {classes} = this.state
+      const coordArray = await Promise.all(classes.map(c => {
+          if (c.address) return { "id": c.id, "coordinates": this.getCoordinates(c.address)}
+      }))
+      this.setState({coordinatesArr: coordArray })
+    } else {
+      const coordArray = await Promise.all(matches.map(c => {
+          if (c.address) return { "id": c.id, "coordinates": this.getCoordinates(c.address)}
+      }))
+      return coordArray
+    }
   }
 
   async getCoordinates(address){
@@ -154,8 +163,8 @@ export default class ClassContainer extends Component {
     return (
       <div className="mapDiv">
         <MapContainer
-          classes={this.state.classes}
           coordinatesArr={this.state.coordinatesArr}
+          filteredClasses={this.state.filteredClasses}
         />
       </div>
     );

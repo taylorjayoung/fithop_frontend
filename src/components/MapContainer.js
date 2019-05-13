@@ -13,9 +13,10 @@ export class MapContainer extends React.Component {
     zoom: 11
   }
   constructor(props){
+    console.log('props: ', props.filteredClasses)
     super(props)
     this.state = {
-      classes: props.classes,
+      classes: props.filteredClasses || props.coordinatesArr,
       renderMap: true
     }
   }
@@ -28,7 +29,15 @@ export class MapContainer extends React.Component {
 
 
   shouldComponentUpdate(prevProps, nextProps){
-      return this.props.address != this.state.address
+    console.log("----------------------------")
+    console.log("----------------------------")
+    console.log("----------------------------")
+    console.log(
+      "this.props: ", this.props.filteredClasses,
+      "prevProps", prevProps.filteredClasses,
+      'nextProps', nextProps
+    )
+      return this.props.filteredClasses != prevProps.filteredClasses
   }
 
   componentWillReceiveProps(nextProps){
@@ -46,9 +55,16 @@ export class MapContainer extends React.Component {
   }
 
   renderMarkers = () => {
-    const { coordinatesArr } = this.props
-    console.log(coordinatesArr);
-    return coordinatesArr.map( coord => <Marker  position={coord}/>)
+    const { coordinatesArr, filteredClasses } = this.props
+    console.log('render markers: ', filteredClasses)
+    if(filteredClasses) return filteredClasses.map( coord =>{
+      console.log(coord)
+      return <Marker  position={coord}/>}
+    )
+    else return coordinatesArr.map( coord => <Marker  position={coord}/>)
+    //setting array variable to the filtered classes that are being passed down as props
+    //if no filtered classes, it will default to coordinatesArr
+
   }
 
   returnMap(){

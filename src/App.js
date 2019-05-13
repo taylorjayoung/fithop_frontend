@@ -9,6 +9,9 @@ import Toolbar from "./components/Toolbar/Toolbar";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
 
+
+//App component holds the outermost functionality
+// logging in, signing up, rendering the class page
 class App extends Component {
   state = {
     home: true,
@@ -46,7 +49,6 @@ class App extends Component {
   };
 
   setUser = user => {
-    debugger;
     this.setState({
       user: user,
       loggedIn: true,
@@ -104,6 +106,17 @@ class App extends Component {
       sideDrawerOpen: false
     });
   };
+
+
+  //Home component displays the sign up and explore classes options
+  //if showLogin state is true, render the Login component
+
+  //if showSignUp state is true, render the SignUp component
+  //conditionally render profile link in nav bar
+
+  //right now profile is coniditionally rendered based on state
+  //but would be more ideal to create a link to profile page based on click
+
   render() {
     let backdrop;
 
@@ -137,6 +150,7 @@ class App extends Component {
               setUser={this.setUser}
             />
           ) : null}
+
           {this.state.showSignUp ? (
             <SignUp
               handleClickFalse={this.handleClickFalse}
