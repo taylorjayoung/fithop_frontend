@@ -5,7 +5,7 @@ import Geocode from "react-geocode";
 import MapContainer from "../MapContainer";
 import GoogleApiWrapper from "../MapContainer";
 import "./ClassContainer.css";
-import listCards from "./listCards";
+import ListCards from "./ListCards";
 
 export default class ClassContainer extends Component {
   constructor(props){
@@ -13,9 +13,7 @@ export default class ClassContainer extends Component {
   }
 
   state = {
-    classes: null,
     view: true,
-    currentClass: "",
     address: null,
     locationFilters: [],
     gymFilters: [],
@@ -28,7 +26,6 @@ export default class ClassContainer extends Component {
 
   async componentDidMount() {
     Geocode.setApiKey("AIzaSyDMIBD2wef6TI6cS-AkncJd7FmaSnWfoyM");
-    this.getClasses();
     this.getGyms();
   }
 
@@ -42,57 +39,41 @@ export default class ClassContainer extends Component {
     );
   }
 
-  async componentWillReceiveProps(nextProps) {
-    if (
-      nextProps.locationFilters.length > 0 ||
-      nextProps.gymFilters.length > 0 ||
-      nextProps.priceFilters.length > 0 ||
-      nextProps.typeFilters.length > 0
-    ) {
-      //matches will be the  classes that have a neighborhood attribute matching a location filter
-      const matches = this.state.classes.filter(c => {
-        return (
-          nextProps.locationFilters.includes(c.neighborhood) ||
-          nextProps.gymFilters.includes(c.gym) ||
-          nextProps.typeFilters.includes(c.type) ||
-          nextProps.priceFilters.includes(c.price)
-        );
-      });
-      this.setState({
-        priceFilters: nextProps.priceFilters || this.state.priceFilters,
-        typeFilters: nextProps.typeFilters || this.state.typeFilters,
-        locationFilters:
-          nextProps.locationFilters || this.state.locationFilters,
-        gymFilters: nextProps.gymFilters || this.state.gymFilters,
-        filteredClasses: matches
-      });
-    } else {
-      this.setState({
-        priceFilters: nextProps.priceFilters || this.state.priceFilters,
-        typeFilters: nextProps.typeFilters || this.state.typeFilters,
-        locationFilters:
-          nextProps.locationFilters || this.state.locationFilters,
-        gymFilters: nextProps.gymFilters || this.state.gymFilters,
-        filteredClasses: this.state.classes
-      });
-    }
-  }
-
-  getClasses = () => {
-    fetch("http://localhost:3000/fitness_classes")
-      .then(res => res.json())
-      .then(jsonData => {
-        this.setState(
-          {
-            classes: jsonData,
-            filteredClasses: jsonData
-          },
-          classes => this.props.setParentClasses(jsonData)
-        )
-
-      })
-      .catch(e => console.log(e));
-  };
+  // async componentWillReceiveProps(nextProps) {
+  //   if (
+  //     nextProps.locationFilters.length > 0 ||
+  //     nextProps.gymFilters.length > 0 ||
+  //     nextProps.priceFilters.length > 0 ||
+  //     nextProps.typeFilters.length > 0
+  //   ) {
+  //     //matches will be the  classes that have a neighborhood attribute matching a location filter
+  //     const matches = this.state.classes.filter(c => {
+  //       return (
+  //         nextProps.locationFilters.includes(c.neighborhood) ||
+  //         nextProps.gymFilters.includes(c.gym) ||
+  //         nextProps.typeFilters.includes(c.type) ||
+  //         nextProps.priceFilters.includes(c.price)
+  //       );
+  //     });
+  //     this.setState({
+  //       priceFilters: nextProps.priceFilters || this.state.priceFilters,
+  //       typeFilters: nextProps.typeFilters || this.state.typeFilters,
+  //       locationFilters:
+  //         nextProps.locationFilters || this.state.locationFilters,
+  //       gymFilters: nextProps.gymFilters || this.state.gymFilters,
+  //       filteredClasses: matches
+  //     });
+  //   } else {
+  //     this.setState({
+  //       priceFilters: nextProps.priceFilters || this.state.priceFilters,
+  //       typeFilters: nextProps.typeFilters || this.state.typeFilters,
+  //       locationFilters:
+  //         nextProps.locationFilters || this.state.locationFilters,
+  //       gymFilters: nextProps.gymFilters || this.state.gymFilters,
+  //       filteredClasses: this.state.classes
+  //     });
+  //   };
+  // };
 
   getGyms = () => {
     fetch("http://localhost:3000/gyms")
@@ -100,48 +81,16 @@ export default class ClassContainer extends Component {
       .then(jsonData => {
         this.setState({
             gyms: jsonData
-          })
+          });
       })
       .catch(e => console.log(e));
   };
 
-  setCurrentAddress = async () => {
-    let currentAddress;
-
-    if (this.state.currentClass) {
-      currentAddress = this.state.currentClass.address;
-    } else {
-      currentAddress = "New York City";
-    }
-
-    this.setState({
-      address: await this.translateAddressToCoordinates(currentAddress).then(
-        function(response) {
-          return response;
-        }
-      )
-    });
-  };
-  setCurrentClass = async event => {
-    //this async function takes the click event from an individual class card
-    // it matches the id of the card with a class in the state classes array
-    if (
-      event.target.value === "View Class" ||
-      event.target.value === "Book Now"
-    ) {
-      return;
-    }
-    const selectedClass = this.state.classes.find(c => {
-      return c.id === parseInt(event.target.id);
-    });
-
-  };
 
   renderMap() {
     return (
       <div className="mapDiv">
         <MapContainer
-          filteredClasses={this.state.filteredClasses}
           gyms={this.state.gyms}
         />
       </div>
@@ -152,6 +101,7 @@ export default class ClassContainer extends Component {
       searchterm: event.target.value
     });
   };
+
   displaySearch = () => {
     return (
       <>
@@ -168,17 +118,12 @@ export default class ClassContainer extends Component {
   render() {
     return (
       <div className="ClassListingContainer">
-        {this.props.displaySearchAndViewTab ? this.displaySearch() : null}
+        {this.displaySearch()}
 
-        <div
-          className={
-            this.state.view === "List" ? "CardContainer" : "SkinnyCardContainer"
-          }
-        >
-          {this.state.filteredClasses
-            ? listCards(
-                this.state.view,
-                this.state.filteredClasses,
+        <div className={"SkinnyCardContainer"}>
+          {this.state.gyms
+            ? ListCards(
+                this.state.gyms,
                 this.setCurrentClass,
                 this.props.viewClass,
                 this.props.bookNow,
@@ -188,7 +133,7 @@ export default class ClassContainer extends Component {
         </div>
 
         <div id="mapDiv">
-          {this.state.classes ? this.renderMap() : null}
+          {this.state.gyms ? this.renderMap() : null}
         </div>
 
       </div>

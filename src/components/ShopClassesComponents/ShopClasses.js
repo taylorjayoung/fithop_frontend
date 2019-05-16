@@ -19,6 +19,9 @@ export default class ShopClasses extends Component {
     displayCheckout: false
   };
 
+//Is this the best way to filter?
+//Converse with react people
+
   locationCheckHandler = event => {
     event.target.checked
       ? this.locationAddFilter(event.target.value)

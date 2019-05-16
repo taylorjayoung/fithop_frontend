@@ -1,48 +1,45 @@
 import React from "react";
 
-export default function listCards(
-  view,
-  classes,
+export default function ListCards(
+  gyms,
   setCurrentClass,
   viewClass,
   bookNow,
   searchterm
 ) {
-  return classes.map(c => {
-    if (c.name.includes(searchterm)) {
+  return gyms.map(gym => {
       return (
         <div
-          key={c.id}
+          key={gym.id}
           onClick={event => setCurrentClass(event)}
-          className={view === "List" ? "ClassCard FirstCard" : "SkinnyCard"}
-          id={c.id}
+          className={"SkinnyCard"}
+          id={gym.id}
         >
-          <div
-            onClick={event => setCurrentClass(event)}
-            id={c.id}
-            className={view === "List" ? "CardInfo" : "SkinnyCardInfo"}
-          >
-            Class: {c.name}, Price: {c.price}, Location: {c.address}, Time:{" "}
-            {c.time}
+          <div className={"SkinnyCardInfo"} >
+            Gym: {gym.name}
+            Classes: {listClasses(gym.fitness_classes)}
           </div>
           <div className="listCards-button-container">
             <div className="MoreInfoButtonDiv">
-              <input
-                type="button"
-                onClick={(event, id) => viewClass(event, c.id)}
-                value="View Class"
-                />
+              <input type="button" onClick={(event, id) => viewClass(event, gym.id)} value="View Class" />
             </div>
             <div className="BookButtonDiv">
-              <input
-                type="button"
-                onClick={(event, id) => bookNow(event, c.id)}
-                value="Book Now"
-                />
+              <input type="button" onClick={(event, id) => bookNow(event, gym.id)} value="Book Now" />
             </div>
           </div>
         </div>
       );
-    }
   });
+}
+
+function listClasses(classes){
+  return classes.map( c => {
+    return (
+      <div key={c.id} className={`class-listing gym-${c.gym_id} cl-${c.id}`} >
+        instructor: {c.instructor}
+        name: {c.name}
+        {`$${c.price}`}
+        spots left: {c.vacancies}
+      </div> )
+  })
 }
