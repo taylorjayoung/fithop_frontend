@@ -10,7 +10,6 @@ import listCards from "./listCards";
 export default class ClassContainer extends Component {
   constructor(props){
     super(props)
-    this.getCoordinatesArray = this.getCoordinatesArray.bind(this)
   }
 
   state = {
@@ -24,12 +23,13 @@ export default class ClassContainer extends Component {
     typeFilters: [],
     filteredClasses: null,
     searchterm: "",
-    coordinatesArr: []
+    gyms: []
   };
 
   async componentDidMount() {
     Geocode.setApiKey("AIzaSyDMIBD2wef6TI6cS-AkncJd7FmaSnWfoyM");
     this.getClasses();
+    this.getGyms();
   }
 
   shouldComponentUpdate(prevProps, nextProps) {
@@ -50,7 +50,6 @@ export default class ClassContainer extends Component {
       nextProps.typeFilters.length > 0
     ) {
       //matches will be the  classes that have a neighborhood attribute matching a location filter
-
       const matches = this.state.classes.filter(c => {
         return (
           nextProps.locationFilters.includes(c.neighborhood) ||
@@ -59,15 +58,13 @@ export default class ClassContainer extends Component {
           nextProps.priceFilters.includes(c.price)
         );
       });
-      const coords = await this.getCoordinatesArray(matches)
       this.setState({
         priceFilters: nextProps.priceFilters || this.state.priceFilters,
         typeFilters: nextProps.typeFilters || this.state.typeFilters,
         locationFilters:
           nextProps.locationFilters || this.state.locationFilters,
         gymFilters: nextProps.gymFilters || this.state.gymFilters,
-        filteredClasses: matches,
-        coordinatesArr: coords
+        filteredClasses: matches
       });
     } else {
       this.setState({
@@ -89,13 +86,21 @@ export default class ClassContainer extends Component {
           {
             classes: jsonData,
             filteredClasses: jsonData
-          }, () => {
-            this.getCoordinatesArray()
-
           },
           classes => this.props.setParentClasses(jsonData)
         )
 
+      })
+      .catch(e => console.log(e));
+  };
+
+  getGyms = () => {
+    fetch("http://localhost:3000/gyms")
+      .then(res => res.json())
+      .then(jsonData => {
+        this.setState({
+            gyms: jsonData
+          })
       })
       .catch(e => console.log(e));
   };
@@ -132,39 +137,12 @@ export default class ClassContainer extends Component {
 
   };
 
-  async getCoordinatesArray(matches){
-    if(!matches){
-      const {classes} = this.state
-      const coordArray = await Promise.all(classes.map(c => {
-          if (c.address) return { "id": c.id, "coordinates": this.getCoordinates(c.address)}
-      }))
-      this.setState({coordinatesArr: coordArray })
-    } else {
-      const coordArray = await Promise.all(matches.map(c => {
-          if (c.address) return { "id": c.id, "coordinates": this.getCoordinates(c.address)}
-      }))
-      return coordArray
-    }
-  }
-
-  async getCoordinates(address){
-    try {
-      const result = await Geocode.fromAddress(address).then(
-        response => response.results[0].geometry.location
-      );
-      return result;
-    } catch (e) {
-      console.log(e);
-    }
-
-  }
-
   renderMap() {
     return (
       <div className="mapDiv">
         <MapContainer
-          coordinatesArr={this.state.coordinatesArr}
           filteredClasses={this.state.filteredClasses}
+          gyms={this.state.gyms}
         />
       </div>
     );

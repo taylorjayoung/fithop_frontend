@@ -13,41 +13,35 @@ export class MapContainer extends React.Component {
     zoom: 11
   }
   constructor(props){
-    console.log('props: ', props.filteredClasses)
     super(props)
     this.state = {
       classes: props.filteredClasses || props.coordinatesArr,
       renderMap: true
     }
   }
-  async componentDidMount(){
-    this.setState({
-      address: this.props.address,
-      renderMap: true,
-    })
-  }
 
-
-  shouldComponentUpdate(prevProps, nextProps){
-    console.log("----------------------------")
-    console.log("----------------------------")
-    console.log("----------------------------")
-    console.log(
-      "this.props: ", this.props.filteredClasses,
-      "prevProps", prevProps.filteredClasses,
-      'nextProps', nextProps
-    )
-      return this.props.filteredClasses != prevProps.filteredClasses
-  }
-
-  componentWillReceiveProps(nextProps){
-    if(this.props.address != this.state.address){
-      this.setState({
-        address: nextProps.address,
-        renderMap: true
-      })
-    }
-  }
+  //
+  //
+  // shouldComponentUpdate(prevProps, nextProps){
+  //   console.log("----------------------------")
+  //   console.log("----------------------------")
+  //   console.log("----------------------------")
+  //   console.log(
+  //     "this.props: ", this.props.filteredClasses,
+  //     "prevProps", prevProps.filteredClasses,
+  //     'nextProps', nextProps
+  //   )
+  //     return this.props.filteredClasses != prevProps.filteredClasses
+  // }
+  //
+  // componentWillReceiveProps(nextProps){
+  //   if(this.props.address != this.state.address){
+  //     this.setState({
+  //       address: nextProps.address,
+  //       renderMap: true
+  //     })
+  //   }
+  // }
 
   style = {
     width: '100%',
@@ -55,13 +49,10 @@ export class MapContainer extends React.Component {
   }
 
   renderMarkers = () => {
-    const { coordinatesArr, filteredClasses } = this.props
-    console.log('render markers: ', filteredClasses)
-    if(filteredClasses) return filteredClasses.map( coord =>{
-      console.log(coord)
-      return <Marker  position={coord}/>}
+    const { gyms, filteredClasses } = this.props
+    return gyms.map( g =>{
+      return <Marker  position={{lat: g.latitude, lng: g.longitude}}/>}
     )
-    else return coordinatesArr.map( coord => <Marker  position={coord}/>)
     //setting array variable to the filtered classes that are being passed down as props
     //if no filtered classes, it will default to coordinatesArr
 
@@ -73,7 +64,7 @@ export class MapContainer extends React.Component {
       <Map
           google={this.props.google}
           style={this.style}
-          zoom={this.props.zoom}
+          zoom={11}
           initialCenter={{
             lat: 40.7634977,
             lng: -73.96202439999999
@@ -95,7 +86,7 @@ export class MapContainer extends React.Component {
     )
   }
 
-  render() {
+  render(){
     const { renderMap } = this.state
 
     return(
@@ -103,6 +94,7 @@ export class MapContainer extends React.Component {
     )
   }
 }
+
 
 export default GoogleApiWrapper({
   apiKey: ("AIzaSyDrRzgxssfS7vlV28d7z-aNHqweThTs7Sw")
