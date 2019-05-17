@@ -17,7 +17,7 @@ const toolbar = props => (
       <div className="toolbar_items">
         <ul>
           <li>
-            <a onClick={props.handleClickExplore}>Classes</a>
+            <a onClick={props.handleClickClasses}>Classes</a>
           </li>
           <li>
             <a>Gym Registration</a>

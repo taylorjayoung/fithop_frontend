@@ -1,0 +1,99 @@
+#SignUp {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 88888;
+  font-family: 'Lato', sans-serif;
+}
+
+#SignUp_container {
+  border-radius: 5px;
+  position: relative;
+  z-index: 99999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 40%;
+  height: 70%;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 1);
+}
+
+.close.signup {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#SignUp_form_container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.SignUp_form.input {
+  border: 1px #e5e5e5 solid;
+  display: block;
+  width: 85%;
+  margin: auto;
+  margin-top: 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: .5rem;
+  box-sizing: border-box;
+  border-radius: 2px;
+  color: inherit;
+}
+
+.SignUp_form.input:focus {
+  outline: none;
+  border-bottom: 3px solid grey;
+}
+
+.SignUp_form.input::placeholder {
+  color: #999;
+}
+
+.SignUp_form_label {
+  width: 82%;
+  margin: auto;
+  margin-top: .5rem;
+  font-size: 1rem;
+  display: block;
+  transition: all .3s;
+  color: #999
+}
+
+.SignUp_form.input:placeholder-shown + .SignUp_form_label.label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-.5rem);
+}
+
+.btn.SignUp{
+  font-size: 1.25rem;
+  padding: .5rem;
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
+  width: 30%;
+  color: #521751;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: 3px solid #521751;
+  opacity: .9;
+}
+
+.btn.SignUp:hover {
+  border: 3px solid yellow;
+  background-color: #571751;
+  color: white;
+}

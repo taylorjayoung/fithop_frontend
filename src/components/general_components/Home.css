@@ -1,0 +1,172 @@
+body {
+  /* background: rgba(100, 20, 150, .3); */
+  background: rgba(0, 0, 0, .1);
+  opacity: 0.9;
+  z-index: -100;
+}
+
+.Div1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: 75px;
+  margin-left: 8%;
+  height: 85%;
+  width: 40%;
+  background: white;
+  background: gold;
+  transform: skewX(-4deg);
+  border: white solid 4px;
+  border-radius: 15px;
+
+}
+
+@media only screen and (max-width: 425px) {
+  .Div1 {
+    margin-left: 5%;
+    height: 40%;
+    width: 85%;
+    transform: skewX(0deg);
+    border-radius: 15px;
+
+  }
+}
+
+.Div2 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 75px;
+  margin-right: 8%;
+  height: 85%;
+  width: 40%;
+  background: grey;
+  z-index: -10;
+  overflow: hidden;
+  transform: skewX(-4deg);
+  border: white solid 4px;
+  border-radius: 15px;
+
+}
+
+@media only screen and (max-width: 425px) {
+  .Div2 {
+    top: 45%;
+    margin-left: 5%;
+    height: 40%;
+    width: 85%;
+    transform: skewX(0deg);
+    border-radius: 15px;
+
+  }
+}
+
+.ImageDiv {
+  display: inline-block;
+  background-image: url("../../resources/images/fitness-5.jpg");
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+
+}
+
+.ExploreClassesDiv {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.ExploreClassesLink {
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  width: 75%;
+  background-color: #521751;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 1.5em;
+  border: 3px solid white;
+  opacity: 0.9;
+  padding: 0.5rem;
+  position: relative;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ExploreClassesLink:hover {
+  border-color: yellow;
+  text-decoration: none;
+  color: yellow;
+}
+
+.SolganDiv {
+  font-weight: bold;
+  font-size: 2.25rem;
+  text-shadow: 1;
+  text-shadow: 2px 2px white;
+  margin-top: 25%;
+  margin-left: 10%;
+  position: absolute;
+  padding: 0.5rem;
+}
+
+@media only screen and (max-width: 425px) {
+  .SolganDiv {
+    margin-top: 10%;
+  }
+}
+
+.SignUpDiv {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.SignUpLink {
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  width: 75%;
+  background-color: #521751;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 1.5em;
+  border: 3px solid white;
+  opacity: 0.9;
+  padding: 0.5rem;
+  position: relative;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.SignUpLink:hover {
+  border-color: #521751;
+  text-decoration: none;
+  background: white;
+  color: #521751;
+}
+
+.HomeDivWrapper {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.HomeBackgroundLineDiv {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: -50;
+  box-sizing: border-box;
+  justify-content: space-around;
+}
+.line {
+  margin-top: 1.5%;
+  width: 100%;
+  height: 2.5px;
+  background-color: #521751;
+  opacity: 0.5;
+}
