@@ -10,6 +10,7 @@
   box-sizing: border-box;
   justify-content: space-around;
 }
+
 .toggle_button:focus {
   outline: none;
 }

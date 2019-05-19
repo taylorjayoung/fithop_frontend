@@ -125,7 +125,7 @@ class App extends Component {
     }
     return (
       <React.Fragment>
-        <div style={{ height: "100%" }}>
+        <div>
           <Toolbar
             drawerClickHandler={this.drawerToggleClickHandler}
             handleClickLogin={this.handleClickLogin}
