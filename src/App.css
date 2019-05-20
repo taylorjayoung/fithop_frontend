@@ -12,3 +12,8 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
+
+.body {
+  font-family: 'Roboto Condensed', sans-serif;
+}

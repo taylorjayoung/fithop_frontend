@@ -1,0 +1,49 @@
+.ProfileInfoDiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+.ProfilePic{
+  padding-top: 1rem;
+  margin: 0 0 0 1rem;
+  height: 8rem;
+  width: 8rem;
+  background-image: url("../../resources/images/profile2.jpeg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  margin: auto;
+}
+
+.Info {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.ProfileLink {
+  margin: 1rem;
+  text-align: center;
+}
+.ProfileLink:hover {
+  color: white;
+  cursor: pointer;
+}
+
+
+.ProfileLink  span{
+  font-size: 1.1rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+  /* font-family: 'Montserrat', sans-serif; */
+  /* font-family: 'Oswald', sans-serif; */
+  /* font-family: 'Kodchasan', sans-serif; */
+  /* font-family: 'Roboto Mono', monospace; */
+  /* font-family: 'Merriweather', serif; */
+
+}

@@ -1,10 +1,10 @@
 import React, { Fragment, Component } from "react";
 import "./App.css";
-import SignUp from "./components/SignUp";
-import Login from "./components/Login";
+import SignUp from "./components/general_components/SignUp";
+import Login from "./components/general_components/Login";
 import ShopClasses from "./components/ShopClassesComponents/ShopClasses";
-import Home from "./components/Home";
-import Profile from "./components/Profile";
+import Home from "./components/general_components/Home";
+import Profile from "./components/profile_components/Profile";
 import Toolbar from "./components/Toolbar/Toolbar";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
@@ -58,6 +58,14 @@ class App extends Component {
       home: false
     });
   };
+
+  handleClickClasses = () =>{
+      this.setState({
+        showLogin: false,
+        exploreClasses: true,
+        home: false
+      })
+  }
 
   handleClickLogout = () => {
     // fetch('http://localhost:3000/logout', {
@@ -132,6 +140,7 @@ class App extends Component {
             handleClickExplore={this.handleClickExplore}
             renderProfile={this.renderProfile}
             loggedIn={this.state.loggedIn}
+            handleClickClasses={this.handleClickClasses}
           />
           <SideDrawer show={this.state.sideDrawerOpen} />
           {backdrop}
@@ -167,5 +176,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;

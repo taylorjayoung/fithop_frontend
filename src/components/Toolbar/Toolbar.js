@@ -42,6 +42,18 @@ const toolbar = props => (
       <div className="navbar__logo">
         <a className=""href="/"><img className="navbar__logo--img" src="logo.png" alt="logo"/></a>
       </div>
+      <div className="spacer"> </div>
+      <div className="toolbar_items">
+        <ul>
+          <li>
+            <a onClick={props.handleClickClasses}>Classes</a>
+          </li>
+          <li>
+            <a>Gym Registration</a>
+          </li>
+          <li>
+            <a>Pricing</a>
+          </li>
 
       <div className="navbar__links">
         <ul>
