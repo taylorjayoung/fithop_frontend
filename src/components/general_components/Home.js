@@ -60,35 +60,20 @@ export default class Home extends Component {
 //   render() {
 //     return (
 //       <div className="home">
-//
-//         <div className="home__left--container">
-//           <div className="home__logo">
-//             <span>Fitness Classes</span><br/>
-//             <span>for</span><br/>
-//             <span>90% Off</span>
+//         <div class="image--container">
+//           <img className="background-img" src="image-1.jpg" />
+//           <img className="background-img" src="image-2.jpeg" />
+//           <img className="background-img" src="image-3.jpeg" />
+//           <img className="background-img" src="image-4.jpeg" />
+//           <img className="background-img" src="image-5.jpeg" />
+//         </div>
+//         <div class="home--container">
+//           <div class="home__header">Fitness Classes for 90% Off</div>
+//           <div class="home__content">
+//             <div className="home--signupLink divLink" onClick={this.props.handleClickSignUp}>Sign Up Free</div>
+//             <div className="home--classLink divLink" onClick={this.props.handleClickExplore}>Explore Classes</div>
 //           </div>
 //         </div>
-//
-//         <div className="home__right--container">
-//           <div className="home__right--image-column-1">
-//             <img className="home__right--image-column-1__img-1" src="image-1.jpeg" alt="image" />
-//             <img className="home__right--image-column-1__img-2" src="image-2.jpeg" alt="image" />
-//             <img className="home__right--image-column-1__img-3" src="image-3.jpeg" alt="image" />
-//             <video className="home__right--image-column-1__img-4" autoPlay="true">
-//               <source src="https://app.coverr.co/s3/mp4/Fightclub.mp4" type="video/mp4" />
-//             </video>
-//             <img className="home__right--image-column-1__img-5" src="image-4.jpeg" alt="image" />
-//           </div>
-//           <div className="home__right--image-column-2">
-//             <video className="home__right--image-column-2__img-1" autoPlay="true">
-//               <source src="https://app.coverr.co/s3/mp4/Boxing-gym.mp4" type="video/mp4" />
-//             </video>
-//             <img className="home__right--image-column-2__img-2" src="image-5.jpeg" alt="image" />
-//             <img className="home__right--image-column-2__img-3" src="image-6.jpeg" alt="image" />
-//             <img className="home__right--image-column-2__img-4" src="image-7.jpeg" alt="image" />
-//           </div>
-//         </div>
-//
 //       </div>
 //     );
 //   }
