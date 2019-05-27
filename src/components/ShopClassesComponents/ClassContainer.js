@@ -5,7 +5,7 @@ import Geocode from "react-geocode";
 import MapContainer from "../MapContainer";
 import GoogleApiWrapper from "../MapContainer";
 import "./ClassContainer.css";
-import ListCards from "./ListCards";
+import ListCards from "./listCards";
 
 export default class ClassContainer extends Component {
   constructor(props){

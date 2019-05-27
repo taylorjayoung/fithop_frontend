@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import "./InfoContainer.css";
-import Toolbar from "../Toolbar/Toolbar";
-import SideDrawer from "../SideDrawer/SideDrawer";
 
 const InfoContainer = props => {
   return(
   <div className="ProfileInfoDiv">
-    <Toolbar />
     <div className="ProfilePictureDiv">
       <div className="ProfilePic">
       </div>
