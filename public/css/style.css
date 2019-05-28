@@ -2,7 +2,8 @@
   color: #fff !important; }
 
 img {
-  width: 100%; }
+  width: 100%;
+ }
 
 .logo {
   width: 80px; }
@@ -15,7 +16,7 @@ img {
   margin-right: 0.4rem; }
 
 #showcase {
-  background: url(../image-3.jpeg) no-repeat top center fixed/cover;
+  background: url('../image-3 copy.jpeg') no-repeat top center fixed/cover;
   position: relative;
   min-height: 650px;
   color: #fff;
@@ -66,8 +67,10 @@ img {
 #work {
   padding: 6rem 0; }
 
+
 .listing-preview a {
-  position: relative; }
+  position: relative;
+   }
 
 @media (max-width: 991px) {
   #showcase {
@@ -94,3 +97,51 @@ img {
     font-size: 30px; }
   #showcase-inner h1 {
     font-size: 40px; } }
+
+
+.about-header {
+  font-size: 7rem !important;
+  /* font-family: 'Roboto Condensed', sans-serif; */
+  margin-top: 30%;
+  /* font-family: 'Roboto', sans-serif; */
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Oswald', sans-serif;
+  /* font-family: 'Kodchasan', sans-serif; */
+  /* font-family: 'Roboto Mono', monospace !important;
+  font-family: 'Merriweather', serif; */
+}
+
+
+.about-main-text-section{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding: 5rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+h3.about-text-center.mb-3{
+  font-size: 3rem !important;
+}
+
+.about-text {
+  width: 100%;
+  font-family: 'Kodchasan', sans-serif;
+  /* font-family: 'Roboto Mono', monospace !important;
+  font-family: 'Merriweather', serif; */
+}
+
+#about-description {
+  width: 50%;
+  text-align: center;
+  margin: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+
+#services-about {
+  background-color: black;
+  padding: 5%;
+  color: white;
+}

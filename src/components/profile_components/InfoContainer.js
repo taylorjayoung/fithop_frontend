@@ -6,6 +6,7 @@ const InfoContainer = props => {
   <div className="ProfileInfoDiv">
     <div className="ProfilePictureDiv">
       <div className="ProfilePic">
+        <i class="fas fa-id-badge fa-4x mr-4 id-badge" ></i>
       </div>
     </div>
     <div className="Info">

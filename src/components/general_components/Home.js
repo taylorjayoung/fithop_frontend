@@ -11,9 +11,9 @@ export default class Home extends Component {
           <div class="home-search p-5">
             <div class="overlay p-5">
               <h1 class="display-4 mb-4">
-                Working Out Just Got Affordable
+                Working Out In NYC Just Got Affordable
               </h1>
-              <p class="lead">Tired of overpaying for overbooked classes? Get last minute deals on the hottest fitness classes in the city!</p>
+              <p class="lead">Tired of overpaying for overbooked classes? Get last minute deals on the hottest workouts in the city!</p>
               <div class="search">
                   {homeSearch}
               </div>
@@ -28,31 +28,33 @@ export default class Home extends Component {
           <div class="row">
 
             <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card listing-preview">
-                <img class="card-img-top" src="image-1.jpg" alt="" />
-                <div class="card-img-overlay">
+              <div class="card listing-preview" href="http://localhost:3001/classes/1" >
+                <img class="card-img-top img " src="image-1 copy.jpg" alt="" />
+                <div class="card-img-overlay" >
                   <h2>
                     <span class="badge badge-secondary text-white">$12.00</span>
                   </h2>
                 </div>
                 <div class="card-body">
-                  <div class="listing-heading text-center">
-                    <h4 class="text-primary">45 Drivewood Circle</h4>
-                    <p>
-                      <i class="fas fa-map-marker text-secondary"></i> Upper East Side</p>
-                  </div>
+                  <a href="http://localhost:3001/classes/3" value="See Class">
+                    <div class="listing-heading text-center">
+                      <h4 class="text-primary">Insanity Workout</h4>
+                      <p>
+                        <i class="fas fa-map-marker text-secondary"></i> Upper East Side</p>
+                    </div>
+                  </a>
                   <hr />
                   <div class="row py-2 text-secondary">
                     <div class="col-6">
-                      <i class="fas fa-th-large"></i> Gym: NYSC</div>
+                      <i class="fas fa-th-large"></i> NYSC</div>
                     <div class="col-6">
-                      <i class="fas fa-users"></i> Vacancies: 2</div>
+                      <i class="fas fa-users"></i> Spots: 2</div>
                   </div>
                   <div class="row py-2 text-secondary">
                     <div class="col-6">
                       <i class="fas fa-heart"></i> Difficulty: 3</div>
                     <div class="col-6">
-                      <i class="fas fa-star"></i> Rating: 2.5</div>
+                      <i class="fas fa-star"></i> Rating: 4</div>
                   </div>
                   <hr />
                   <div class="row py-2 text-secondary">
@@ -61,34 +63,36 @@ export default class Home extends Component {
                   </div>
                   <div class="row text-secondary pb-2">
                     <div class="col-6">
-                      <i class="fas fa-clock"></i> 10 minutes left</div>
+                      <i class="fas fa-clock"></i> 90 minutes</div>
                   </div>
                   <hr />
-                  <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
+                  <a href="http://localhost:3001/classes/1/book" class="btn btn-primary btn-block">Book Now</a>
                 </div>
               </div>
             </div>
 
             <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card listing-preview">
-                <img class="card-img-top" src="image-2.jpeg" alt="" />
+              <div class="card listing-preview" href="http://localhost:3001/classes/2">
+                <img class="card-img-top img" src="image-2 copy.jpeg" alt="" />
                 <div class="card-img-overlay">
                   <h2>
                     <span class="badge badge-secondary text-white">$15.00</span>
                   </h2>
                 </div>
                 <div class="card-body">
-                  <div class="listing-heading text-center">
-                    <h4 class="text-primary">Pilates Fury</h4>
-                    <p>
-                      <i class="fas fa-map-marker text-secondary"></i> Alphabet City</p>
-                  </div>
+                  <a href="http://localhost:3001/classes/3" value="See Class">
+                    <div class="listing-heading text-center">
+                      <h4 class="text-primary">Pilates Fury</h4>
+                      <p>
+                        <i class="fas fa-map-marker text-secondary"></i> Alphabet City</p>
+                    </div>
+                  </a>
                   <hr />
                   <div class="row py-2 text-secondary">
                     <div class="col-6">
-                      <i class="fas fa-th-large"></i> Gym: Barry's Bootcamp</div>
+                      <i class="fas fa-th-large"></i> Barry's</div>
                     <div class="col-6">
-                      <i class="fas fa-users"></i> Vacancies: 1</div>
+                      <i class="fas fa-users"></i> Spots: 1</div>
                   </div>
                   <div class="row py-2 text-secondary">
                     <div class="col-6">
@@ -103,35 +107,38 @@ export default class Home extends Component {
                   </div>
                   <div class="row text-secondary pb-2">
                     <div class="col-6">
-                      <i class="fas fa-clock"></i> 5 minutes left</div>
+                      <i class="fas fa-clock"></i> 45 minutes</div>
                   </div>
                   <hr />
-                  <a href="listing.html" class="btn btn-primary btn-block">Book Now</a>
+                  <a href="http://localhost:3001/classes/2/book" class="btn btn-primary btn-block">Book Now</a>
                 </div>
               </div>
             </div>
 
 
             <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card listing-preview">
-                <img class="card-img-top" src="image-3.jpeg" alt="" />
+              <div class="card listing-preview" >
+              <img class="card-img-top img" src="image-3 copy.jpeg" alt="see class" />
                 <div class="card-img-overlay">
                   <h2>
                     <span class="badge badge-secondary text-white">$9.99</span>
                   </h2>
                 </div>
                 <div class="card-body">
-                  <div class="listing-heading text-center">
-                    <h4 class="text-primary">187 Woodrow Street</h4>
-                    <p>
-                      <i class="fas fa-map-marker text-secondary"></i> Upper West Side</p>
-                  </div>
+                  <a href="http://localhost:3001/classes/3" value="See Class">
+                    <div class="listing-heading text-center">
+                      <h4 class="text-primary">Band Stretches</h4>
+                      <p>
+                        <i class="fas fa-map-marker text-secondary"></i> Upper West Side</p>
+                    </div>
+                  </a>
+
                   <hr />
                   <div class="row py-2 text-secondary">
                     <div class="col-6">
-                      <i class="fas fa-th-large"></i> Gym: Soul Cycle</div>
+                      <i class="fas fa-th-large"></i> Soul Cycle</div>
                     <div class="col-6">
-                      <i class="fas fa-users"></i> Vacancies: 0</div>
+                      <i class="fas fa-users"></i> Spots: 0</div>
                   </div>
                   <div class="row py-2 text-secondary">
                     <div class="col-6">
@@ -146,10 +153,10 @@ export default class Home extends Component {
                   </div>
                   <div class="row text-secondary pb-2">
                     <div class="col-6">
-                      <i class="fas fa-clock"></i> 19 minutes left</div>
+                      <i class="fas fa-clock"></i> 60 minutes</div>
                   </div>
                   <hr />
-                  <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
+                  <a href="http://localhost:3001/classes/3/book" class="btn btn-primary btn-block">Book Now</a>
                 </div>
               </div>
             </div>

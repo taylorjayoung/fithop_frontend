@@ -39,44 +39,8 @@ export default class ClassContainer extends Component {
     );
   }
 
-  // async componentWillReceiveProps(nextProps) {
-  //   if (
-  //     nextProps.locationFilters.length > 0 ||
-  //     nextProps.gymFilters.length > 0 ||
-  //     nextProps.priceFilters.length > 0 ||
-  //     nextProps.typeFilters.length > 0
-  //   ) {
-  //     //matches will be the  classes that have a neighborhood attribute matching a location filter
-  //     const matches = this.state.classes.filter(c => {
-  //       return (
-  //         nextProps.locationFilters.includes(c.neighborhood) ||
-  //         nextProps.gymFilters.includes(c.gym) ||
-  //         nextProps.typeFilters.includes(c.type) ||
-  //         nextProps.priceFilters.includes(c.price)
-  //       );
-  //     });
-  //     this.setState({
-  //       priceFilters: nextProps.priceFilters || this.state.priceFilters,
-  //       typeFilters: nextProps.typeFilters || this.state.typeFilters,
-  //       locationFilters:
-  //         nextProps.locationFilters || this.state.locationFilters,
-  //       gymFilters: nextProps.gymFilters || this.state.gymFilters,
-  //       filteredClasses: matches
-  //     });
-  //   } else {
-  //     this.setState({
-  //       priceFilters: nextProps.priceFilters || this.state.priceFilters,
-  //       typeFilters: nextProps.typeFilters || this.state.typeFilters,
-  //       locationFilters:
-  //         nextProps.locationFilters || this.state.locationFilters,
-  //       gymFilters: nextProps.gymFilters || this.state.gymFilters,
-  //       filteredClasses: this.state.classes
-  //     });
-  //   };
-  // };
-
   getGyms = () => {
-    fetch("http://localhost:3000/gyms")
+    fetch("http://localhost:3001/gyms")
       .then(res => res.json())
       .then(jsonData => {
         this.setState({
@@ -119,18 +83,10 @@ export default class ClassContainer extends Component {
     return (
       <div className="ClassListingContainer">
         {this.displaySearch()}
+        //below is style for each class, will have to be moved to list classes
+        // link to indvidual class will have to use info from map function in list classes
 
-        <div className={"SkinnyCardContainer"}>
-          {this.state.gyms
-            ? ListCards(
-                this.state.gyms,
-                this.setCurrentClass,
-                this.props.viewClass,
-                this.props.bookNow,
-                this.state.searchterm
-              )
-            : null}
-        </div>
+        {this.listCards}
 
         <div id="mapDiv">
           {this.state.gyms ? this.renderMap() : null}
