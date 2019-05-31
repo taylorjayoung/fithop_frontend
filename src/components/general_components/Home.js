@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Toolbar from "../Toolbar/Toolbar";
-import SideDrawer from "../SideDrawer/SideDrawer";
-import Backdrop from "../Backdrop/Backdrop";
+// import Toolbar from "../Toolbar/Toolbar";
+// import SideDrawer from "../SideDrawer/SideDrawer";
+// import Backdrop from "../Backdrop/Backdrop";
 import "./Home.css";
 // import "./Home2.css";
 
@@ -60,20 +60,37 @@ export default class Home extends Component {
 //   render() {
 //     return (
 //       <div className="home">
-//         <div class="image--container">
-//           <img className="background-img" src="image-1.jpg" />
-//           <img className="background-img" src="image-2.jpeg" />
-//           <img className="background-img" src="image-3.jpeg" />
-//           <img className="background-img" src="image-4.jpeg" />
-//           <img className="background-img" src="image-5.jpeg" />
-//         </div>
-//         <div class="home--container">
-//           <div class="home__header">Fitness Classes for 90% Off</div>
-//           <div class="home__content">
-//             <div className="home--signupLink divLink" onClick={this.props.handleClickSignUp}>Sign Up Free</div>
-//             <div className="home--classLink divLink" onClick={this.props.handleClickExplore}>Explore Classes</div>
+//
+//         <div className="home__container container--1">
+//           <div className="container__sub--1">
+//             <div class="home--container">
+//               <div class="home__header">Fitness Classes for 90% Off</div>
+//               <div class="home__content">
+//                 <div className="home--signupLink divLink" onClick={this.props.handleClickSignUp}>Sign Up Free</div>
+//                 <div className="home--classLink divLink" onClick={this.props.handleClickExplore}>Explore Classes</div>
+//               </div>
+//             </div>
 //           </div>
 //         </div>
+//
+//         <div className="home__container container--2">
+//           <div className="container__sub--2">
+//             <div>hi</div>
+//           </div>
+//         </div>
+//
+//         <div className="home__container container--3">
+//           <div className="container__sub--3">
+//             <div>hi</div>
+//           </div>
+//         </div>
+//
+//         <div className="home__container container--4">
+//           <div className="container__sub--4">
+//             <div>hi</div>
+//           </div>
+//         </div>
+//
 //       </div>
 //     );
 //   }

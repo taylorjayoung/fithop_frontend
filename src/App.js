@@ -18,7 +18,7 @@ class App extends Component {
     showLogin: false,
     showSignUp: false,
     exploreClasses: false,
-    user: null,
+    user: 1,
     loggedIn: false,
     renderProfile: false,
     sideDrawerOpen: false
