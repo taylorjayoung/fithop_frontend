@@ -20,29 +20,6 @@ export class MapContainer extends React.Component {
     }
   }
 
-  //
-  //
-  // shouldComponentUpdate(prevProps, nextProps){
-  //   console.log("----------------------------")
-  //   console.log("----------------------------")
-  //   console.log("----------------------------")
-  //   console.log(
-  //     "this.props: ", this.props.filteredClasses,
-  //     "prevProps", prevProps.filteredClasses,
-  //     'nextProps', nextProps
-  //   )
-  //     return this.props.filteredClasses != prevProps.filteredClasses
-  // }
-  //
-  // componentWillReceiveProps(nextProps){
-  //   if(this.props.address != this.state.address){
-  //     this.setState({
-  //       address: nextProps.address,
-  //       renderMap: true
-  //     })
-  //   }
-  // }
-
   style = {
     width: '100%',
     height: '100%'
