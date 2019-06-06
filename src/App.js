@@ -27,7 +27,6 @@ class App extends Component {
             <Toolbar />
             <Route path="/" exact={true} component={Home}/>
             <Route path="/classes" exact={true} component={ShopClasses}/>
-            <Route path="/classes/:class_id"  exact={true} component={ClassInfo}/>
             <Route path="/about" exact={true} component={About}/>
             <Route path="/signup" exact={true} component={SignUp}/>
             <Route path="/login" exact={true} component={Login}/>
