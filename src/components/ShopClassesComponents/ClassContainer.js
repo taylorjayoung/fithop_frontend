@@ -54,11 +54,9 @@ export default class ClassContainer extends Component {
 
   renderMap() {
     return (
-      <div className="mapDiv">
-        <MapContainer
-          classes={this.state.fitness_classes}
-        />
-      </div>
+      <MapContainer
+        classes={this.state.fitness_classes}
+      />
     );
   }
   searchHandler = event => {

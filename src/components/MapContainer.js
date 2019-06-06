@@ -1,4 +1,3 @@
-
 import React from 'react'
 import {GoogleApiWrapper, Map, InfoWindow, Marker} from 'google-maps-react';
 import GoogleMapReact from 'google-maps-react';

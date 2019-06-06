@@ -6,7 +6,7 @@
 }
 
 .filter-div {
-  width: 10.5rem;
+  width: 11rem;
   margin-right: .5rem;
 }
 
@@ -19,7 +19,7 @@
   padding-left: .5rem;
   background: rgba(16, 40, 78, .9);
   color: white;
-  width: 10.5rem;
+  width: 11rem;
 }
 
 .filter-bar__header::after {
@@ -57,12 +57,27 @@
   margin-top: .5rem;
 }
 
+.priceListing {
+  display: flex;
+  align-items: center;
+}
+
 .priceListing:first-child {
   margin-top: .5rem;
 }
 
+.gymListing {
+  display: flex;
+  align-items: center;
+}
+
 .gymListing:first-child {
   margin-top: .5rem;
+}
+
+.typeListing {
+  display: flex;
+  align-items: center;
 }
 
 .typeListing:first-child {
