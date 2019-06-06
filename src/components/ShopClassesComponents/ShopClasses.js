@@ -20,7 +20,6 @@ export default class ShopClasses extends Component {
 
 //Is this the best way to filter?
 //Converse with react people
-
   locationCheckHandler = event => {
     event.target.checked
       ? this.locationAddFilter(event.target.value)
@@ -152,8 +151,7 @@ export default class ShopClasses extends Component {
 
   render() {
     return (
-      <>
-        <div className="ShopContainerHeader"> </div>
+      <div className="shop_classes_container">
         {this.state.displayFilterBar ? (
           <FilterBar
             locationCheckHandler={this.locationCheckHandler}
@@ -186,7 +184,7 @@ export default class ShopClasses extends Component {
           />
         ) : null}
 
-      < />
+      </div>
     );
   }
 }

@@ -1,6 +1,5 @@
-.ShopContainer {
-  text-align: center;
-}
-.ShopContainerHeader {
-  display: inline-block;
+.shop_classes_container {
+  padding-top: 3.5rem;
+  height: 100vh;
+  box-sizing: border-box;
 }

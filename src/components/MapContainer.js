@@ -1,3 +1,4 @@
+
 import React from 'react'
 import {GoogleApiWrapper, Map, InfoWindow, Marker} from 'google-maps-react';
 import GoogleMapReact from 'google-maps-react';
@@ -15,8 +16,16 @@ export class MapContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      classes: props.filteredClasses || props.coordinatesArr,
-      renderMap: true
+      classes: props.classes,
+      renderMap: true,
+      markers: props.classes.map( g => {
+        return(
+        <Marker
+          position={{
+            lat: g.gym.latitude,
+            lng: g.gym.longitude
+        }}/>)
+      })
     }
   }
 
@@ -26,17 +35,10 @@ export class MapContainer extends React.Component {
   }
 
   renderMarkers = () => {
-    const { gyms, filteredClasses } = this.props
-    return gyms.map( g =>{
-      return <Marker  position={{lat: g.latitude, lng: g.longitude}}/>}
-    )
-    //setting array variable to the filtered classes that are being passed down as props
-    //if no filtered classes, it will default to coordinatesArr
-
+      return this.state.markers
   }
 
   returnMap(){
-
     return(
       <Map
           google={this.props.google}

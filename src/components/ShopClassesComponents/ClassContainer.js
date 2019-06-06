@@ -5,7 +5,7 @@ import Geocode from "react-geocode";
 import MapContainer from "../MapContainer";
 import GoogleApiWrapper from "../MapContainer";
 import "./ClassContainer.css";
-import ListCards from "./listCards";
+import listCards from "./listCards";
 
 export default class ClassContainer extends Component {
   constructor(props){
@@ -20,13 +20,13 @@ export default class ClassContainer extends Component {
     priceFilters: [],
     typeFilters: [],
     filteredClasses: null,
-    searchterm: "",
-    gyms: []
+    searchterm: ""
   };
 
   async componentDidMount() {
+    console.log('class container component mounted')
     Geocode.setApiKey("AIzaSyDMIBD2wef6TI6cS-AkncJd7FmaSnWfoyM");
-    this.getGyms();
+    this.getClasses();
   }
 
   shouldComponentUpdate(prevProps, nextProps) {
@@ -39,13 +39,14 @@ export default class ClassContainer extends Component {
     );
   }
 
-  getGyms = () => {
-    fetch("http://localhost:3001/gyms")
+  getClasses = () => {
+    fetch("http://localhost:3000/fitness_classes")
       .then(res => res.json())
       .then(jsonData => {
         this.setState({
-            gyms: jsonData
-          });
+            fitness_classes: jsonData,
+            displayed_classes: jsonData.slice(0, 20)
+          }, () => console.log('found classes'));
       })
       .catch(e => console.log(e));
   };
@@ -55,7 +56,7 @@ export default class ClassContainer extends Component {
     return (
       <div className="mapDiv">
         <MapContainer
-          gyms={this.state.gyms}
+          classes={this.state.fitness_classes}
         />
       </div>
     );
@@ -82,14 +83,14 @@ export default class ClassContainer extends Component {
   render() {
     return (
       <div className="ClassListingContainer">
-        {this.displaySearch()}
-        //below is style for each class, will have to be moved to list classes
-        // link to indvidual class will have to use info from map function in list classes
-
-        {this.listCards}
-
+        <div className="listings__container">
+          {this.displaySearch()}
+          <div className="class_listing_div">
+            {this.state.fitness_classes ? listCards(this.state.displayed_classes) : null}
+          </div>
+        </div>
         <div id="mapDiv">
-          {this.state.gyms ? this.renderMap() : null}
+          {this.state.fitness_classes ? this.renderMap() : null}
         </div>
 
       </div>

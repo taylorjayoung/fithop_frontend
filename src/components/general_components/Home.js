@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import homeSearch from "../search_components/home_search"
 
-
 export default class Home extends Component {
   render(){
     return(
