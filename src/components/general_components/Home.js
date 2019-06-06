@@ -49,7 +49,9 @@ export default class Home extends Component {
       gym_info_node = document.getElementsByClassName('gym_info_node')[0]
     }
 
-
+    const button = document.getElementById('book_now_button')
+    button.addEventListener('click', this.props.saveIdToState(selectedClass.id))
+    button.value = selectedClass.id
     class_info_header.innerText = "Class Info: "
     class_info_node.innerText = (
       ` Type: ${selectedClass.class_type}
