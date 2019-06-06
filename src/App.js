@@ -14,10 +14,6 @@ import Route from "react-router-dom/Route"
 import About from './components/about_components/About'
 
 
-//App component holds the outermost functionality
-// logging in, signing up, rendering the class page
-
-
 class App extends Component {
   state = {
     home: true
@@ -28,15 +24,15 @@ class App extends Component {
     return (
       <Router>
         <React.Fragment>
-          <Toolbar />
-          <Route path="/" exact={true} component={Home}/>
-          <Route path="/classes" component={ShopClasses}/>
-          <Route path="/classes/:class_id"  exact={true} component={ClassInfo}/>
-          <Route path="/about" exact={true} component={About}/>
-          <Route path="/signup" exact={true} component={SignUp}/>
-          <Route path="/login" exact={true} component={Login}/>
-          <Route path="/profile" exact={true} component={Profile}/>
-          <Route path="/contact" exact={true} component={ContactUs}/>
+            <Toolbar />
+            <Route path="/" exact={true} component={Home}/>
+            <Route path="/classes" exact={true} component={ShopClasses}/>
+            <Route path="/classes/:class_id"  exact={true} component={ClassInfo}/>
+            <Route path="/about" exact={true} component={About}/>
+            <Route path="/signup" exact={true} component={SignUp}/>
+            <Route path="/login" exact={true} component={Login}/>
+            <Route path="/profile" exact={true} component={Profile}/>
+            <Route path="/contact" exact={true} component={ContactUs}/>
           <Footer />
         </React.Fragment>
       </Router>

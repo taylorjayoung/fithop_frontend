@@ -3,6 +3,15 @@ import homeSearch from "../search_components/home_search"
 
 
 export default class Home extends Component {
+  async componentDidMount(){
+    const sponsored_classes = await fetch("http://localhost:3001/sponsored_classes")
+          .then(res => res.json())
+          .then(jsonData => jsonData)
+          .catch(e => console.log(e));
+  }
+
+
+
   render(){
     return(
       <React.Fragment>
