@@ -1,6 +1,13 @@
-.filter-bar {
-  width: 50%;
-  height: 3rem;
+.ShopContainerHeader {
+  /* display: inline-block; */
+  /* border: 1px black solid; */
+}
+
+.FilterBar {
+  /* border: 1px black solid; */
+  margin-top: 3rem;
+  width: 55%;
+  overflow-x: scroll;
   display: flex;
   margin: 1rem 0rem 0rem 1rem;
 }

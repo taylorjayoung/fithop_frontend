@@ -54,9 +54,11 @@ export default class ClassContainer extends Component {
 
   renderMap() {
     return (
-      <MapContainer
-        classes={this.state.fitness_classes}
-      />
+      <div className="mapDiv">
+        <MapContainer
+          classes={this.state.fitness_classes}
+        />
+      </div>
     );
   }
   searchHandler = event => {
@@ -81,11 +83,9 @@ export default class ClassContainer extends Component {
   render() {
     return (
       <div className="ClassListingContainer">
-        <div className="listings__container">
-          {this.displaySearch()}
-          <div className="class_listing_div">
-            {this.state.fitness_classes ? listCards(this.state.displayed_classes) : null}
-          </div>
+        {this.displaySearch()}
+        <div className="class_listing_div">
+          {this.state.fitness_classes ? listCards(this.state.displayed_classes) : null}
         </div>
         <div id="mapDiv">
           {this.state.fitness_classes ? this.renderMap() : null}

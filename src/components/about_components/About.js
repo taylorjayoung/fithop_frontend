@@ -4,7 +4,7 @@ import aboutForm from './aboutForm'
 const About = () => {
   return(
         <React.Fragment>
-          <section id="showcase" style={backgroundStyle}>
+          <section id="showcase" class="about_showcase" style={backgroundStyle}>
           <div class="container text-center">
             <h1 class="about-header" id="about-header">
               Get To Know Us
@@ -31,7 +31,7 @@ const About = () => {
           </div>
         </div>
 
-        <section id="services-about">
+        <section id="services-about" class="services_about">
           <div class="container">
             <div class="row text-center">
               <div class="col-md-4">

@@ -1,7 +1,77 @@
 import React, { Component } from "react";
 import homeSearch from "../search_components/home_search"
+import InfoModal from "../modals/class_info_modal/InfoModal"
 
 export default class Home extends Component {
+  async componentDidMount(){
+    const sponsored_classes = await fetch("http://localhost:3000/sponsored_classes")
+          .then(res => res.json())
+          .then(jsonData => jsonData)
+          .catch(e => console.log(e));
+
+      this.setState({
+        sponsored_classes: sponsored_classes
+      })
+  }
+
+
+  renderModal(event){
+    const id = event.target.id
+    const selectedClass = this.state.sponsored_classes[parseInt(id) - 1]
+    const modal = document.getElementById('exampleModal')
+    const modalHeader = document.getElementsByClassName('modal-header')[0].children[0]
+    const modalBody = document.getElementsByClassName('modal-body')[0]
+    modalHeader.innerText= selectedClass.name
+
+    let classNode
+    let class_info_header
+    let gym_info_header
+    let class_info_node
+    let gym_info_node
+
+    if(!document.getElementsByClassName('class_node')[0]){
+      classNode = document.createElement('div')
+      classNode.className = "class_node"
+      class_info_header = document.createElement('h3')
+      class_info_header.className = "info_modal_header"
+      gym_info_header = document.createElement('h3')
+      gym_info_header.className = "info_modal_header"
+      gym_info_header.innerText = "Gym Info: "
+      class_info_node = document.createElement('p')
+      class_info_node.className = ('class_info_node')
+      gym_info_node = document.createElement('p')
+      gym_info_node.className = ('gym_info_node')
+    } else {
+      classNode = document.getElementsByClassName('class_node')[0]
+      class_info_header = document.getElementsByClassName('info_modal_header')[0]
+      gym_info_header = document.getElementsByClassName('info_modal_header')[1]
+      class_info_node = document.getElementsByClassName('class_info_node')[0]
+      gym_info_node = document.getElementsByClassName('gym_info_node')[0]
+    }
+
+    const button = document.getElementById('book_now_button')
+    button.addEventListener('click', this.props.saveIdToState(selectedClass.id))
+    button.value = selectedClass.id
+    class_info_header.innerText = "Class Info: "
+    class_info_node.innerText = (
+      ` Type: ${selectedClass.class_type}
+        Instructor: ${selectedClass.instructor}
+        Vacanscies: ${selectedClass.vacancies}
+        Price: $${selectedClass.price}`
+      )
+    gym_info_node.innerText = (`
+        Name: ${selectedClass.gym.name}
+        Neighborhood: ${selectedClass.gym.neighborhood}
+        Address: ${selectedClass.gym.address}
+      `)
+    classNode.append(class_info_header)
+    classNode.append(class_info_node)
+    classNode.append(gym_info_header)
+    classNode.append(gym_info_node)
+    modalBody.appendChild(classNode)
+
+  }
+
   render(){
     return(
       <React.Fragment>
@@ -27,7 +97,7 @@ export default class Home extends Component {
           <div class="row">
 
             <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card listing-preview" href="http://localhost:3001/classes/1" >
+              <div class="card listing-preview">
                 <img class="card-img-top img " src="image-1 copy.jpg" alt="" />
                 <div class="card-img-overlay" >
                   <h2>
@@ -35,9 +105,9 @@ export default class Home extends Component {
                   </h2>
                 </div>
                 <div class="card-body">
-                  <a href="http://localhost:3001/classes/3" value="See Class">
+                  <a value="See Class">
                     <div class="listing-heading text-center">
-                      <h4 class="text-primary">Insanity Workout</h4>
+                      <h4 class="text-primary" id={1} data-toggle="modal" data-target="#exampleModal" onClick={(event) => this.renderModal(event)}>Insanity Workout</h4>
                       <p>
                         <i class="fas fa-map-marker text-secondary"></i> Upper East Side</p>
                     </div>
@@ -65,13 +135,13 @@ export default class Home extends Component {
                       <i class="fas fa-clock"></i> 90 minutes</div>
                   </div>
                   <hr />
-                  <a href="http://localhost:3001/classes/1/book" class="btn btn-primary btn-block">Book Now</a>
+                  <a class="btn btn-primary btn-block">Book Now</a>
                 </div>
               </div>
             </div>
 
             <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card listing-preview" href="http://localhost:3001/classes/2">
+              <div class="card listing-preview" >
                 <img class="card-img-top img" src="image-2 copy.jpeg" alt="" />
                 <div class="card-img-overlay">
                   <h2>
@@ -79,9 +149,9 @@ export default class Home extends Component {
                   </h2>
                 </div>
                 <div class="card-body">
-                  <a href="http://localhost:3001/classes/3" value="See Class">
+                  <a  value="See Class">
                     <div class="listing-heading text-center">
-                      <h4 class="text-primary">Pilates Fury</h4>
+                      <h4 class="text-primary" id={2} data-toggle="modal" data-target="#exampleModal" onClick={(event) => this.renderModal(event)}>Pilates Fury</h4>
                       <p>
                         <i class="fas fa-map-marker text-secondary"></i> Alphabet City</p>
                     </div>
@@ -109,7 +179,7 @@ export default class Home extends Component {
                       <i class="fas fa-clock"></i> 45 minutes</div>
                   </div>
                   <hr />
-                  <a href="http://localhost:3001/classes/2/book" class="btn btn-primary btn-block">Book Now</a>
+                  <a class="btn btn-primary btn-block">Book Now</a>
                 </div>
               </div>
             </div>
@@ -124,9 +194,9 @@ export default class Home extends Component {
                   </h2>
                 </div>
                 <div class="card-body">
-                  <a href="http://localhost:3001/classes/3" value="See Class">
+                  <a value="See Class">
                     <div class="listing-heading text-center">
-                      <h4 class="text-primary">Band Stretches</h4>
+                      <h4 class="text-primary" id={3} data-toggle="modal" data-target="#exampleModal" onClick={(event) => this.renderModal(event)}>Band Stretches</h4>
                       <p>
                         <i class="fas fa-map-marker text-secondary"></i> Upper West Side</p>
                     </div>
@@ -155,7 +225,7 @@ export default class Home extends Component {
                       <i class="fas fa-clock"></i> 60 minutes</div>
                   </div>
                   <hr />
-                  <a href="http://localhost:3001/classes/3/book" class="btn btn-primary btn-block">Book Now</a>
+                  <a class="btn btn-primary btn-block">Book Now</a>
                 </div>
               </div>
             </div>

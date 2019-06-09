@@ -1,12 +1,12 @@
 .navbar {
   position: fixed;
   width: 100%;
-  opacity: .95;
 }
 
 #showcase {
   min-height: 700px;
   padding-top: 10rem;
+
 }
 
 .about-header {

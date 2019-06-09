@@ -1,5 +1,7 @@
-.shop_classes_container {
-  padding-top: 3.5rem;
-  height: 100vh;
-  box-sizing: border-box;
+.ShopContainer {
+  text-align: center;
+}
+
+div.FilterBar {
+  margin: 0;
 }

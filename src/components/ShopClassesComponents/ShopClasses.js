@@ -151,7 +151,7 @@ export default class ShopClasses extends Component {
 
   render() {
     return (
-      <div className="shop_classes_container">
+      <>
         {this.state.displayFilterBar ? (
           <FilterBar
             locationCheckHandler={this.locationCheckHandler}
