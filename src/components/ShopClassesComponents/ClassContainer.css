@@ -1,171 +1,160 @@
-/* .ClassListingContainer {
-  width: 100%;
-  height: 85%;
-  position: absolute;
-  border: 1px black solid;
-}
-
-.ClassSearchBar {
-  border: 1px lightgrey solid;
-  width: 54%;
-  height: 5%;
-  border-radius: 5px;
-  padding: 1rem;
-  outline: none;
-  -webkit-appearance: none;
-  margin: .5rem;
-  font-size: 1rem;
-}
-
-.SkinnyCardContainer{
-  width: 53.5%;
-  height: 33.55rem;
-  padding: 0rem .5rem;
-  overflow-y: scroll;
-  border-right: 1px lightgrey solid;
-}
-
-.SkinnyCard{
-  border: 1px grey solid;
-  border-radius: 4px;
-  height: 25%;
-  width: 95%;
-  text-align: center;
-  font-weight: bold;
-  display: block;
-  position: relative;
-  margin: auto;
-  margin-top: 1.5rem;
-}
-
-.SkinnyCard:first-child {
-  margin-top: 0;
-}
-
-.SkinnyCard::after {
-  content: "";
-  background-image: url("https://images.unsplash.com/photo-1522956957021-9f2437e01594?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
-  opacity: 0.25;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-  background-size: cover;
-  filter: grayscale(100%);
-}
-
-.SkinnyCardInfo{
-  border: 1px black solid;
-  padding: .5rem;
-  display: inline-block;
-  width: 80%;
-  font-size: .85em;
-  height: 50%;
-  box-sizing: border-box;
-}
-
-.ClassCard{
-  border: 1px grey solid;
-  border-radius: 4px;
-  height: 25%;
-  width: 28%;
-  margin-top: 1.5rem;
-  text-align: center;
-  font-weight: bold;
-  display: block;
-  position: relative;
-  z-index: 99999;
-  background-color: rgba(255, 255, 255, .5);
-}
-
-.CardInfo::after {
-  content: "";
-  background-image: url("https://images.unsplash.com/photo-1522956957021-9f2437e01594?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
-  opacity: 0.25;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-  background-size: cover;
-  filter: grayscale(100%);
-}
-
-.CardInfo{
-  padding: .5rem;
-  display: inline-block;
-  width: 80%;
-  font-size: .85em;
-  height: 50%;
-  box-sizing: border-box;
-}
-
-.listCards-button-container {
-  position: relative;
-  width: 70%;
-  top: 20%;
-  display: flex;
-  justify-content: space-around;
-  margin: auto;
-}
-
-.ViewControlTab {
-  position: absolute;
-  right: 0;
-  display: flex;
-  padding: 1%;
-}
-
-.ListView {
-  margin: .25rem;
-  padding: .25rem .5rem;
-  border: 1px black solid;
-  background-color: grey;
-  font-weight: bold;
-  z-index: 100;
-  font-size: .75rem;
-}
-
-.MapView {
-  border: 1px black solid;
-}
-
-.mapDiv {
-  background-color: pink;
-  position: absolute;
-  top: -3.5rem;
-  right: .5rem;
-  width: 44%;
-  height: 105%;
-  margin-top: 1%;
-}
-
-.class-listing {
-  border: 1px black solid
-} */
-
 .ClassListingContainer {
-  border: 1px black solid;
   display: flex;
 }
 
 .listings__container {
-  border: 1px blue solid;
-  width: 53%;
+  width: 51%;
+  height: 40rem;
+}
+
+.ClassSearchBar {
+  width: 97%;
+  margin: 0rem .5rem;
+  padding: .25rem .5rem;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  border: 1px rgba(16, 40, 78, .9) solid;
+  border-radius: 4px;
+  font-family: sans-serif;
+}
+
+.class_listing_div {
+  padding: .25rem .5rem;
+  margin-top: .5rem;
+  width: 99%;
+  box-sizing: border-box;
+  height: 90%;
+  overflow-y: scroll;
+}
+
+.SkinnyCard {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+  display: flex;
+}
+
+.SkinnyCard:first-child {
+  margin-top: 0rem;
+}
+
+.SkinnyCardImageContainer {
+  min-width: 10rem;
+  width: 25%;
+  margin-right: .5rem;
+  position: relative;
+}
+
+.SkinnyCardImage {
+  border-top-left-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+  opacity: .9;
+  height: 100%;
+}
+
+.SkinnyCardPrice {
+  position: absolute;
+  z-index: 1;
+  background-color: #30caa0;
+  color: white;
+  margin: .5rem;
+  padding: .25rem;
+  border-radius: .25rem;
+}
+
+.SkinnyCardInfoContainer {
+  width: 75%;
+  padding: .5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.SkinnyCardInfo {
+  width: 50%;
+}
+
+.SkinnyCardGymType {
+  font-size: .6rem;
+  color: grey;
+}
+
+.SkinnyCardGymName {
+  font-size: 1.2rem;
+  color: #10284e;
+  font-weight: bold;
+  padding: .25rem 0rem;
+}
+
+.SkinnyCardGymInstructor {
+  font-size: .9rem;
+}
+
+.SkinnyCardDetailContainer {
+  width: 50%;
+  font-size: .9rem;
+  color: grey;
+  padding: .25rem .5rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.listCards-button-container {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+
+.SkinnyCardButton {
+  font-family: sans-serif;
+  font-size: .8rem;
+  background-color: rgba(16, 40, 78, .8);
+  color: white;
+  padding: .25rem 1rem;
+  cursor: pointer;
+  border-radius: .25rem;
+  border: none;
+  height: 2rem;
+}
+
+.SkinnyCardButton:hover {
+  background-color: rgb(16, 40, 78);
+}
+
+.SkinnyCardButton2 {
+  font-family: sans-serif;
+  font-size: .8rem;
+  background-color: rgba(48, 202, 160, .8);
+  color: white;
+  padding: .25rem 1rem;
+  cursor: pointer;
+  border-radius: .25rem;
+  border: none;
+  height: 2rem;
+}
+
+.SkinnyCardButton2:hover {
+  background-color: rgb(48, 202, 160);
 }
 
 #mapDiv {
-  border: 1px red solid;
-  width: 47%;
+  width: 49%;
+  margin-top: -3rem;
 }
 
-.class_listing_div{
-  width: 55%;
-  display: flex;
-  flex-direction: column;
-  height: 85%;
-  overflow-y: scroll;
+#mapDiv div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mapDiv {
+  border: 1px blue solid;
+}
+
+.map {
+  width: 49%;
 }

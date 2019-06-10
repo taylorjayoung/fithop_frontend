@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './InfoModal.css'
 
 export default class InfoModal extends Component {
   constructor(props) {

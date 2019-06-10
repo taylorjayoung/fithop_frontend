@@ -1,19 +1,15 @@
-.ShopContainerHeader {
-  /* display: inline-block; */
-  /* border: 1px black solid; */
-}
-
-.FilterBar {
-  /* border: 1px black solid; */
-  margin-top: 3rem;
-  width: 55%;
-  overflow-x: scroll;
+.filter-bar {
+  margin-top: 4rem;
+  width: 50%;
+  height: 2.5rem;
+  padding: 0rem 0rem 0rem .5rem;
   display: flex;
-  margin: 1rem 0rem 0rem 1rem;
+  box-sizing: border-box;
 }
 
 .filter-div {
-  width: 11rem;
+  min-width: 8rem;
+  width: 25%;
   margin-right: .5rem;
 }
 
@@ -26,7 +22,8 @@
   padding-left: .5rem;
   background: rgba(16, 40, 78, .9);
   color: white;
-  width: 11rem;
+  min-width: 8rem;
+  font-size: .8rem;
 }
 
 .filter-bar__header::after {
@@ -34,7 +31,7 @@
   white-space: nowrap;
   position: relative;
   float: right;
-  font-size: 1rem;
+  font-size: .8rem;
   margin-right: 1rem;
   color: white;
   display: inline-block;
@@ -53,6 +50,7 @@
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   display: none;
+  font-size: .8rem;
 }
 
 .locationListing {

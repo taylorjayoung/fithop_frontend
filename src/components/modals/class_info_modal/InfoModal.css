@@ -1,0 +1,43 @@
+.modal-header .close {
+  margin: -1rem;
+}
+
+.modal-title {
+  margin: auto;
+  color: #30caa0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.modal__content--top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal__content--middle {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.modal__middle-img {
+  width: 50%;
+  height: 50%;
+}
+
+.modal__middle-description {
+  width: 50%;
+  padding: 0rem 0rem 0rem .5rem;
+  color: grey;
+  font-size: .8rem;
+}
+
+.modal__content--bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.modal__sub--gym-name {
+  color: #10284e;
+  font-weight: bold;
+}

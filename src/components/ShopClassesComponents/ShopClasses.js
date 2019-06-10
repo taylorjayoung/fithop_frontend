@@ -183,8 +183,7 @@ export default class ShopClasses extends Component {
             bookNow={this.bookNow}
           />
         ) : null}
-
-      </div>
+      </>
     );
   }
 }
