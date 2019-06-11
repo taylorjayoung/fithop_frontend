@@ -1,6 +1,7 @@
 .ShopContainer {
   text-align: center;
 }
-.ShopContainerHeader {
-  display: inline-block;
+
+div.FilterBar {
+  margin: 0;
 }

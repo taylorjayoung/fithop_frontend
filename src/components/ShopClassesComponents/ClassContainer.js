@@ -5,7 +5,7 @@ import Geocode from "react-geocode";
 import MapContainer from "../MapContainer";
 import GoogleApiWrapper from "../MapContainer";
 import "./ClassContainer.css";
-import ListCards from "./ListCards";
+import listCards from "./listCards";
 
 export default class ClassContainer extends Component {
   constructor(props){
@@ -20,13 +20,13 @@ export default class ClassContainer extends Component {
     priceFilters: [],
     typeFilters: [],
     filteredClasses: null,
-    searchterm: "",
-    gyms: []
+    searchterm: ""
   };
 
   async componentDidMount() {
+    console.log('class container component mounted')
     Geocode.setApiKey("AIzaSyDMIBD2wef6TI6cS-AkncJd7FmaSnWfoyM");
-    this.getGyms();
+    this.getClasses();
   }
 
   shouldComponentUpdate(prevProps, nextProps) {
@@ -39,49 +39,14 @@ export default class ClassContainer extends Component {
     );
   }
 
-  // async componentWillReceiveProps(nextProps) {
-  //   if (
-  //     nextProps.locationFilters.length > 0 ||
-  //     nextProps.gymFilters.length > 0 ||
-  //     nextProps.priceFilters.length > 0 ||
-  //     nextProps.typeFilters.length > 0
-  //   ) {
-  //     //matches will be the  classes that have a neighborhood attribute matching a location filter
-  //     const matches = this.state.classes.filter(c => {
-  //       return (
-  //         nextProps.locationFilters.includes(c.neighborhood) ||
-  //         nextProps.gymFilters.includes(c.gym) ||
-  //         nextProps.typeFilters.includes(c.type) ||
-  //         nextProps.priceFilters.includes(c.price)
-  //       );
-  //     });
-  //     this.setState({
-  //       priceFilters: nextProps.priceFilters || this.state.priceFilters,
-  //       typeFilters: nextProps.typeFilters || this.state.typeFilters,
-  //       locationFilters:
-  //         nextProps.locationFilters || this.state.locationFilters,
-  //       gymFilters: nextProps.gymFilters || this.state.gymFilters,
-  //       filteredClasses: matches
-  //     });
-  //   } else {
-  //     this.setState({
-  //       priceFilters: nextProps.priceFilters || this.state.priceFilters,
-  //       typeFilters: nextProps.typeFilters || this.state.typeFilters,
-  //       locationFilters:
-  //         nextProps.locationFilters || this.state.locationFilters,
-  //       gymFilters: nextProps.gymFilters || this.state.gymFilters,
-  //       filteredClasses: this.state.classes
-  //     });
-  //   };
-  // };
-
-  getGyms = () => {
-    fetch("http://localhost:3000/gyms")
+  getClasses = () => {
+    fetch("http://localhost:3000/fitness_classes")
       .then(res => res.json())
       .then(jsonData => {
         this.setState({
-            gyms: jsonData
-          });
+            fitness_classes: jsonData,
+            displayed_classes: jsonData.slice(0, 20)
+          }, () => console.log('found classes'));
       })
       .catch(e => console.log(e));
   };
@@ -91,7 +56,7 @@ export default class ClassContainer extends Component {
     return (
       <div className="mapDiv">
         <MapContainer
-          gyms={this.state.gyms}
+          classes={this.state.fitness_classes}
         />
       </div>
     );
@@ -119,21 +84,11 @@ export default class ClassContainer extends Component {
     return (
       <div className="ClassListingContainer">
         {this.displaySearch()}
-
-        <div className={"SkinnyCardContainer"}>
-          {this.state.gyms
-            ? ListCards(
-                this.state.gyms,
-                this.setCurrentClass,
-                this.props.viewClass,
-                this.props.bookNow,
-                this.state.searchterm
-              )
-            : null}
+        <div className="class_listing_div">
+          {this.state.fitness_classes ? listCards(this.state.displayed_classes) : null}
         </div>
-
         <div id="mapDiv">
-          {this.state.gyms ? this.renderMap() : null}
+          {this.state.fitness_classes ? this.renderMap() : null}
         </div>
 
       </div>

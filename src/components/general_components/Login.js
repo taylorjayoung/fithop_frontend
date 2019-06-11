@@ -14,7 +14,7 @@ class Login extends Component {
 
   handleSubmitLogin = event => {
     event.preventDefault();
-    fetch("http://localhost:3000/login", {
+    fetch("http://localhost:3001/login", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -43,7 +43,7 @@ class Login extends Component {
     return (
       <div id="login">
         <div id="login_container">
-          <div className="close" onClick={this.props.handleClickFalse}>
+          <div className="close" onClick={this.props.handleLogin}>
             X
           </div>
           <form id="login_form_container" onSubmit={this.handleSubmitLogin}>
