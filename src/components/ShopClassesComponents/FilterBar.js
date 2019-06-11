@@ -58,11 +58,10 @@ export default class FilterBar extends Component {
   }
 
   render(){
-    console.log(this.state);
     return (
-      <div className="FilterBar">
+      <div className="filter-bar">
 
-        <div className="LocationPreferenceDiv">
+        <div className="filter-div location">
           <form>
             <div onClick={this.handleClickLocation} className="filter-bar__header location">Location</div>
             <div className="filter-bar__content location" id="location">
@@ -134,7 +133,7 @@ export default class FilterBar extends Component {
           </form>
         </div>
 
-        <div className="PricePreferenceDiv">
+        <div className="filter-div price">
           <form>
             <div onClick={this.handleClickPrice} className="filter-bar__header price">Price</div>
             <div className="filter-bar__content price" id="price">
@@ -154,7 +153,7 @@ export default class FilterBar extends Component {
           </form>
         </div>
 
-        <div className="GymPreferenceDiv">
+        <div className="filter-div gym">
           <form>
             <div onClick={this.handleClickGym} className="filter-bar__header gym">Gym</div>
             <div className="filter-bar__content gym" id="gym">
@@ -162,27 +161,22 @@ export default class FilterBar extends Component {
                 Barry's Bootcamp
                 <input type="checkbox" value="Barry's Bootcamp"  className="checkbox"/>
               </label>
-
               <label onChange={(event) => this.props.gymCheckHandler(event)} className="gymListing">
                 NYSC
                 <input type="checkbox" value="NYSC"  className="checkbox"/>
               </label>
-
               <label onChange={(event) => this.props.gymCheckHandler(event)} className="gymListing">
                 Soul Cycle
                 <input type="checkbox" value="Soul Cycle"  className="checkbox"/>
               </label>
-
               <label onChange={(event) => this.props.gymCheckHandler(event)} className="gymListing">
                 FlyWheel
                 <input type="checkbox" value="FlyWheel"  className="checkbox"/>
               </label>
-
               <label onChange={(event) => this.props.gymCheckHandler(event)} className="gymListing">
                 Fhitting Room
                 <input type="checkbox" value="Fhitting Room"  className="checkbox"/>
               </label>
-
               <label onChange={(event) => this.props.gymCheckHandler(event)} className="gymListing">
                 KickAxe
                 <input type="checkbox" value="KickAxe"  className="checkbox"/>
@@ -190,9 +184,7 @@ export default class FilterBar extends Component {
             </div>
           </form>
         </div>
-
-
-        <div className="TypePreferenceDiv">
+        <div className="filter-div type">
           <form>
             <div onClick={this.handleClickType} className="filter-bar__header type">Type</div>
             <div className="filter-bar__content type" id="type">
@@ -200,22 +192,18 @@ export default class FilterBar extends Component {
                 KickBoxing
                 <input type="checkbox"value="KickBoxing" className="checkbox"/>
               </label>
-
               <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
                 Cycling
                 <input type="checkbox"value="Cycling" className="checkbox"/>
               </label>
-
               <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
                 Cardio
                 <input type="checkbox"value="Cardio" className="checkbox"/>
               </label>
-
               <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
                 Bootcamp
                 <input type="checkbox"value="Bootcamp" className="checkbox"/>
               </label>
-
               <label onChange={(event) => this.props.typeCheckHandler(event)} className="typeListing">
                 Running
                 <input type="checkbox"value="Running" className="checkbox"/>

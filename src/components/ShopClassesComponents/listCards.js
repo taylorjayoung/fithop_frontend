@@ -1,4 +1,7 @@
 import React from "react";
+import { BrowserRouter as Route, Router, Link} from "react-router-dom";
+import ClassInfo from "./ClassInfo.js"
+import './listCards.css'
 
 // export default function ListCards() {
 //   console.log('list cards')
@@ -70,24 +73,35 @@ export default function listCards(
   return fitness_classes.map(fitness_class => {
     console.log(fitness_class)
       return (
+        <>
         <div
           key={fitness_class.id}
-          onClick={event => setCurrentClass(event)}
           className={"SkinnyCard"}
           id={fitness_class.id}
         >
-          <div className={"SkinnyCardInfo"} >
-            Gym: {fitness_class.name}
+          <div className="SkinnyCardImageContainer">
+            <span className="SkinnyCardPrice">$12.00</span>
+            <img className="SkinnyCardImage" src="image-3 copy.jpeg" alt="image"/>
           </div>
-          <div className="listCards-button-container">
-            <div className="MoreInfoButtonDiv">
-              <input type="button" onClick={(event, id) => viewClass(event, fitness_class.id)} value="View Class" />
+          <div className="SkinnyCardInfoContainer">
+            <div className={"SkinnyCardInfo"} >
+              <div className="SkinnyCardGymType">{fitness_class.class_type}</div>
+              <div className="SkinnyCardGymName">{fitness_class.name}</div>
+              <div className="SkinnyCardGymInstructor">{fitness_class.instructor}</div>
             </div>
-            <div className="BookButtonDiv">
-              <input type="button" onClick={(event, id) => bookNow(event, fitness_class.id)} value="Book Now" />
+            <div className="SkinnyCardDetailContainer">
+              <div className="SkinnyCardGymDetail">gym details/description</div>
+            </div>
+            <div className="listCards-button-container">
+              <input className="SkinnyCardButton" type="button" onClick={(event, id) => viewClass(event, fitness_class.id)} value="View Class" />
+              <Link to={`/classes/${fitness_class.id}`}>View Class</Link>
+              <input className="SkinnyCardButton2" type="button" onClick={(event, id) => bookNow(event, fitness_class.id)} value="Book Now" />
             </div>
           </div>
         </div>
+
+        <Route path={`/classes/${fitness_class.id}`} component={ClassInfo}/>
+        </>
       );
   });
 }

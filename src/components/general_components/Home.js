@@ -32,19 +32,12 @@ export default class Home extends Component {
     if(!document.getElementsByClassName('class_node')[0]){
       classNode = document.createElement('div')
       classNode.className = "class_node"
-      class_info_header = document.createElement('h3')
-      class_info_header.className = "info_modal_header"
-      gym_info_header = document.createElement('h3')
-      gym_info_header.className = "info_modal_header"
-      gym_info_header.innerText = "Gym Info: "
       class_info_node = document.createElement('p')
       class_info_node.className = ('class_info_node')
       gym_info_node = document.createElement('p')
       gym_info_node.className = ('gym_info_node')
     } else {
       classNode = document.getElementsByClassName('class_node')[0]
-      class_info_header = document.getElementsByClassName('info_modal_header')[0]
-      gym_info_header = document.getElementsByClassName('info_modal_header')[1]
       class_info_node = document.getElementsByClassName('class_info_node')[0]
       gym_info_node = document.getElementsByClassName('gym_info_node')[0]
     }
@@ -52,27 +45,37 @@ export default class Home extends Component {
     const button = document.getElementById('book_now_button')
     button.addEventListener('click', this.props.saveIdToState(selectedClass.id))
     button.value = selectedClass.id
-    class_info_header.innerText = "Class Info: "
-    class_info_node.innerText = (
-      ` Type: ${selectedClass.class_type}
-        Instructor: ${selectedClass.instructor}
-        Vacanscies: ${selectedClass.vacancies}
-        Price: $${selectedClass.price}`
-      )
-    gym_info_node.innerText = (`
-        Name: ${selectedClass.gym.name}
-        Neighborhood: ${selectedClass.gym.neighborhood}
-        Address: ${selectedClass.gym.address}
-      `)
-    classNode.append(class_info_header)
+    class_info_node.innerHTML = `
+      <div class="modal__content--top">
+        <div class="modal__top-rating">Rating: ★★★★</div>
+        <div class="modal__top-type">Type: ${selectedClass.class_type}</div>
+      </div>
+      <div class="modal__content--middle">
+        <img class="modal__middle-img" src="image-1 copy.jpg" alt="image"/>
+        <div class="modal__middle-description">description</div>
+      </div>
+      <div class="modal__content--bottom">
+        <div>
+          <div class="modal__bottom-instructor">Instructor: ${selectedClass.instructor}</div>
+          <div class="modal__bottom-vacancies">Vacanscies: ${selectedClass.vacancies}</div>
+        </div>
+        <div class="modal__bottom-price">Price: $${selectedClass.price}</div>
+      </div>
+    `
+    gym_info_node.innerHTML = `
+      <div class="modal__content--sub">
+        <div class="modal__sub--gym-name">${selectedClass.gym.name}</div>
+        <div class="modal__sub--gym-neighborhood">${selectedClass.gym.neighborhood}</div>
+        <div class="modal__sub--gym-address">${selectedClass.gym.address}</div>
+      </div>
+      `
     classNode.append(class_info_node)
-    classNode.append(gym_info_header)
     classNode.append(gym_info_node)
     modalBody.appendChild(classNode)
-
   }
 
   render(){
+    console.log(this.state);
     return(
       <React.Fragment>
         <section id="showcase">

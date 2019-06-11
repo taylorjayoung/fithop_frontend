@@ -28,11 +28,6 @@ export class MapContainer extends React.Component {
     }
   }
 
-  style = {
-    width: '100%',
-    height: '100%'
-  }
-
   renderMarkers = () => {
       return this.state.markers
   }
@@ -41,7 +36,6 @@ export class MapContainer extends React.Component {
     return(
       <Map
           google={this.props.google}
-          style={this.style}
           zoom={11}
           initialCenter={{
             lat: 40.7634977,

@@ -51,7 +51,6 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <Router>
         <React.Fragment>
@@ -60,13 +59,10 @@ class App extends Component {
               { (props) =>
                 <Home saveIdToState = {this.saveIdToState} />
               }
-            />
-          {this.state.showSignUp ? <SignUp handleSignUp={this.handleSignUp}/> : null}
-          {this.state.showLogin ? <Login handleLogin={this.handleLogin}/> : null}
+              />
             <Route path="/classes" exact={true} component={ShopClasses}/>
             <Route path="/about" exact={true} component={About}/>
             <Route path="/profile" exact={true} component={Profile}/>
-            <Route path="/contact" exact={true} component={ContactUs}/>
             <Route path="/contact" exact={true} component={ContactUs}/>
             <Route path="/book" exact={true} render={
                 props => <BookClass classId={this.state.selectedClass}/>
