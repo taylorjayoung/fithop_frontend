@@ -1,4 +1,7 @@
 import React from "react";
+import { BrowserRouter as Route, Router, Link} from "react-router-dom";
+import ClassInfo from "./ClassInfo.js"
+import './listCards.css'
 
 // export default function ListCards() {
 //   console.log('list cards')
@@ -70,9 +73,9 @@ export default function listCards(
   return fitness_classes.map(fitness_class => {
     console.log(fitness_class)
       return (
+        <>
         <div
           key={fitness_class.id}
-          onClick={event => setCurrentClass(event)}
           className={"SkinnyCard"}
           id={fitness_class.id}
         >
@@ -91,10 +94,14 @@ export default function listCards(
             </div>
             <div className="listCards-button-container">
               <input className="SkinnyCardButton" type="button" onClick={(event, id) => viewClass(event, fitness_class.id)} value="View Class" />
+              <Link to={`/classes/${fitness_class.id}`}>View Class</Link>
               <input className="SkinnyCardButton2" type="button" onClick={(event, id) => bookNow(event, fitness_class.id)} value="Book Now" />
             </div>
           </div>
         </div>
+
+        <Route path={`/classes/${fitness_class.id}`} component={ClassInfo}/>
+        </>
       );
   });
 }

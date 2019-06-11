@@ -33,7 +33,6 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <Router>
         <React.Fragment>
@@ -44,14 +43,12 @@ class App extends Component {
                   saveIdToState = {this.saveIdToState}
                   />
               }
-
               />
             <Route path="/classes" exact={true} component={ShopClasses}/>
             <Route path="/about" exact={true} component={About}/>
             <Route path="/signup" exact={true} component={SignUp}/>
             <Route path="/login" exact={true} component={Login}/>
             <Route path="/profile" exact={true} component={Profile}/>
-            <Route path="/contact" exact={true} component={ContactUs}/>
             <Route path="/contact" exact={true} component={ContactUs}/>
             <Route path="/book" exact={true} render={
                 props => <BookClass classId={this.state.selectedClass}/>
