@@ -13,13 +13,16 @@ const toolbar = (props) => {
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
           <li class="nav-item mr-3">
-            <Link to='/'  class="nav-link" >Home</Link>
+            <Link to='/'  class="nav-link">Home</Link>
           </li>
           <li class="nav-item mr-3">
-            <Link to='/about' class="nav-link" >About</Link>
+            <Link to='/about' class="nav-link">About</Link>
           </li>
           <li class="nav-item mr-3">
-            <Link to='/classes' class="nav-link" >Classes</Link>
+            <Link to='/classes' class="nav-link">Classes</Link>
+          </li>
+          <li class="nav-item mr-3">
+            <Link to='/trainers' class="nav-link">Trainers</Link>
           </li>
         </ul>
 

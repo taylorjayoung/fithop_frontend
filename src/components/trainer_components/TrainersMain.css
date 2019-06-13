@@ -1,0 +1,76 @@
+.trainers__main {
+  border: 1px black solid;
+  padding-top: 3.5rem;
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.trainers__container {
+  border: 1px blue solid;
+  width: 70%;
+  height: 100%;
+}
+
+.calendar__week {
+  border: 1px black solid;
+  width: 60%;
+  margin-left: auto;
+}
+
+.trainer__container {
+  border: 1px red solid;
+  height: 80%;
+  overflow-y: scroll;
+}
+
+.trainer {
+}
+
+.trainer__header {
+  background-color: rgba(16, 40, 78, .9);
+  color: white;
+  padding: .25rem;
+  font-weight: bold;
+}
+
+.trainer__content {
+  display: flex;
+}
+
+.trainer__info {
+  width: 40%;
+  display: flex;
+}
+
+.trainer__info--main {
+  padding: .5rem;
+}
+
+.trainer__img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: .25rem;
+}
+
+.trainer__rating {
+  text-align: center;
+  margin-top: .25rem;
+  font-size: .7rem;
+}
+
+.trainer__info--sub {
+  width: 70%;
+  padding: .25rem;
+  font-size: .7rem;
+}
+
+.calendar__times {
+  border: 1px black solid;
+  width: 60%;
+}
+
+.trainers__map__container {
+  width: 30%;
+}
